@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="空间曲线的基本理论与Frenet标架 1. 正则空间曲线的定义 定义弧长参数曲线 r(s) &#x3D; (x(s), y(s), z(s)) ∈ ℝ3 为正则曲线，满足： r′(s) ≠ 0,  s ∈ (0, b) ## 2. Frenet标架的构建 (1) 单位切向量 $$ \mathbf{T}(s) &#x3D; \frac{d}{ds}\mathbf{r}(s) \tag{1} $$ (2">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://rapierpeish.github.io/peish_blog/.io//spaceimage.png">
+<meta property="og:image" content="https://rapierpeish.github.io/peish_blog/images/Pasted_image_20250720223956.png">
 <meta property="article:published_time" content="2025-08-30T01:00:02.268Z">
-<meta property="article:modified_time" content="2025-08-30T02:32:27.399Z">
+<meta property="article:modified_time" content="2025-08-30T03:01:58.953Z">
 <meta property="article:author" content="Peish.L">
 <meta property="article:tag" content="微分几何">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://rapierpeish.github.io/peish_blog/.io//spaceimage.png">
+<meta name="twitter:image" content="https://rapierpeish.github.io/peish_blog/images/Pasted_image_20250720223956.png">
   
   
   
@@ -282,10 +282,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="空间曲线的基本理论与frenet标架">空间曲线的基本理论与Frenet标架</h1>
+                <h1
+id="空间曲线的基本理论与frenet标架">空间曲线的基本理论与Frenet标架</h1>
 <h2 id="正则空间曲线的定义">1. 正则空间曲线的定义</h2>
-<p>定义弧长参数曲线 <span class="math inline"><strong>r</strong>(<em>s</em>) = (<em>x</em>(<em>s</em>), <em>y</em>(<em>s</em>), <em>z</em>(<em>s</em>)) ∈ ℝ<sup>3</sup></span>
-为正则曲线，满足： <span class="math display"><strong>r</strong><sup>′</sup>(<em>s</em>) ≠ 0,  <em>s</em> ∈ (0, <em>b</em>)</span>
+<p>定义弧长参数曲线 <span
+class="math inline"><strong>r</strong>(<em>s</em>) = (<em>x</em>(<em>s</em>), <em>y</em>(<em>s</em>), <em>z</em>(<em>s</em>)) ∈ ℝ<sup>3</sup></span>
+为正则曲线，满足： <span
+class="math display"><strong>r</strong><sup>′</sup>(<em>s</em>) ≠ 0,  <em>s</em> ∈ (0, <em>b</em>)</span>
 ## 2. Frenet标架的构建</p>
 <h3 id="单位切向量">(1) 单位切向量</h3>
 <p><span class="math display">$$
@@ -296,9 +299,11 @@ $$</span></p>
 \mathbf{N}(s) = \frac{\mathbf{T}'(s)}{|\mathbf{T}'(s)|} \tag{2}
 $$</span></p>
 <h3 id="副法向量">(3) 副法向量</h3>
-<p><span class="math display"><strong>B</strong>(<em>s</em>) = <strong>T</strong>(<em>s</em>) × <strong>N</strong>(<em>s</em>)</span></p>
+<p><span
+class="math display"><strong>B</strong>(<em>s</em>) = <strong>T</strong>(<em>s</em>) × <strong>N</strong>(<em>s</em>)</span></p>
 <h2 id="frenet标架与微分方程">3. Frenet标架与微分方程</h2>
-<p>Frenet标架定义为： <span class="math display">Frenet := {<strong>T</strong>, <strong>N</strong>, <strong>B</strong>}</span></p>
+<p>Frenet标架定义为： <span
+class="math display">Frenet := {<strong>T</strong>, <strong>N</strong>, <strong>B</strong>}</span></p>
 <p>其变化规律由Frenet-Serret公式描述： <span class="math display">$$
 \frac{d}{ds}\begin{pmatrix} \mathbf{T} \\ \mathbf{N} \\ \mathbf{B}
 \end{pmatrix} =
@@ -311,92 +316,136 @@ $$</span></p>
 \tag{6}
 $$</span></p>
 <h2 id="曲率的推导">4. 曲率的推导</h2>
-<p>由(2)式可得： <span class="math display">|<strong>T</strong><sup>′</sup>(<em>s</em>)|<strong>N</strong>(<em>s</em>) = <strong>T</strong><sup>′</sup>(<em>s</em>)</span>
-定义曲率 <span class="math inline"><em>κ</em>(<em>s</em>)</span>： <span class="math display"><em>κ</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) = <strong>T</strong><sup>′</sup>(<em>s</em>)</span></p>
+<p>由(2)式可得： <span
+class="math display">|<strong>T</strong><sup>′</sup>(<em>s</em>)|<strong>N</strong>(<em>s</em>) = <strong>T</strong><sup>′</sup>(<em>s</em>)</span>
+定义曲率 <span class="math inline"><em>κ</em>(<em>s</em>)</span>： <span
+class="math display"><em>κ</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) = <strong>T</strong><sup>′</sup>(<em>s</em>)</span></p>
 <blockquote>
-<p><strong>几何意义</strong>：曲率 <span class="math inline"><em>κ</em>(<em>s</em>)</span>
+<p><strong>几何意义</strong>：曲率 <span
+class="math inline"><em>κ</em>(<em>s</em>)</span>
 描述曲线弯曲程度，等于切向量变化率的大小。</p>
 </blockquote>
 <h2 id="挠率的推导">5. 挠率的推导</h2>
 <h3 id="法向量的导数展开">(1) 法向量的导数展开</h3>
-<p>由于 <span class="math inline">{<strong>T</strong>, <strong>N</strong>, <strong>B</strong>}</span>
-是正交标架，可将 <span class="math inline"><strong>N</strong><sup>′</sup>(<em>s</em>)</span>
-表示为： <span class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) = <em>a</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>b</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) + <em>c</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)</span></p>
+<p>由于 <span
+class="math inline">{<strong>T</strong>, <strong>N</strong>, <strong>B</strong>}</span>
+是正交标架，可将 <span
+class="math inline"><strong>N</strong><sup>′</sup>(<em>s</em>)</span>
+表示为： <span
+class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) = <em>a</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>b</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) + <em>c</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)</span></p>
 <h3 id="系数求解">(2) 系数求解</h3>
-<p><strong>① 求<span class="math inline"><em>a</em>(<em>s</em>)</span>:</strong>
+<p><strong>① 求<span
+class="math inline"><em>a</em>(<em>s</em>)</span>:</strong>
 对(7)式两边点乘<span class="math inline"><strong>T</strong></span>：
-<span class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) ⋅ <strong>T</strong>(<em>s</em>) = <em>a</em>(<em>s</em>)</span>
+<span
+class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) ⋅ <strong>T</strong>(<em>s</em>) = <em>a</em>(<em>s</em>)</span>
 由导数关系： <span class="math display">$$
 \frac{d}{ds}(\mathbf{N} \cdot \mathbf{T}) = \mathbf{N}' \cdot \mathbf{T}
 + \mathbf{N} \cdot \mathbf{T}' = 0 \tag{9}
-$$</span> 结合(5)式： <span class="math display"><strong>N</strong><sup>′</sup> ⋅ <strong>T</strong> + <em>κ</em><strong>N</strong> ⋅ <strong>N</strong> = 0 ⇒ <em>a</em>(<em>s</em>) = −<em>κ</em>(<em>s</em>)</span></p>
-<p><strong>② 求<span class="math inline"><em>b</em>(<em>s</em>)</span>:</strong>
+$$</span> 结合(5)式： <span
+class="math display"><strong>N</strong><sup>′</sup> ⋅ <strong>T</strong> + <em>κ</em><strong>N</strong> ⋅ <strong>N</strong> = 0 ⇒ <em>a</em>(<em>s</em>) = −<em>κ</em>(<em>s</em>)</span></p>
+<p><strong>② 求<span
+class="math inline"><em>b</em>(<em>s</em>)</span>:</strong>
 对(7)式两边点乘<span class="math inline"><strong>N</strong></span>：
-<span class="math display"><em>b</em>(<em>s</em>) = 0  (因为<strong>N</strong><sup>′</sup> ⟂ <strong>N</strong>)</span></p>
-<p><strong>③ 求<span class="math inline"><em>c</em>(<em>s</em>)</span>:</strong> 定义挠率
-<span class="math inline"><em>τ</em>(<em>s</em>)</span>： <span class="math display"><em>c</em>(<em>s</em>) = <em>τ</em>(<em>s</em>) = −<strong>N</strong><sup>′</sup>(<em>s</em>) ⋅ <strong>B</strong>(<em>s</em>)</span></p>
+<span
+class="math display"><em>b</em>(<em>s</em>) = 0  (因为<strong>N</strong><sup>′</sup> ⟂ <strong>N</strong>)</span></p>
+<p><strong>③ 求<span
+class="math inline"><em>c</em>(<em>s</em>)</span>:</strong> 定义挠率
+<span class="math inline"><em>τ</em>(<em>s</em>)</span>： <span
+class="math display"><em>c</em>(<em>s</em>) = <em>τ</em>(<em>s</em>) = −<strong>N</strong><sup>′</sup>(<em>s</em>) ⋅ <strong>B</strong>(<em>s</em>)</span></p>
 <h3 id="最终表达式">(3) 最终表达式</h3>
-<p><span class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) = −<em>κ</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)</span></p>
+<p><span
+class="math display"><strong>N</strong><sup>′</sup>(<em>s</em>) = −<em>κ</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)</span></p>
 <blockquote>
-<p><strong>几何意义</strong>：挠率 <span class="math inline"><em>τ</em>(<em>s</em>)</span>
+<p><strong>几何意义</strong>：挠率 <span
+class="math inline"><em>τ</em>(<em>s</em>)</span>
 描述曲线偏离平面曲线的程度。</p>
 </blockquote>
-<h1 id="空间曲线的挠率与平面曲线的关系">空间曲线的挠率与平面曲线的关系</h1>
+<h1
+id="空间曲线的挠率与平面曲线的关系">空间曲线的挠率与平面曲线的关系</h1>
 <h2 id="定理">定理</h2>
 <p>设 <span class="math inline"><strong>r</strong>(<em>s</em>)</span>
-是一条正则的空间曲线，参数为弧长 <span class="math inline"><em>s</em></span>。则： <span class="math display"><em>τ</em>(<em>s</em>) ≡ 0  （挠率恒为零）  ⇔  <strong>r</strong>(<em>s</em>)
+是一条正则的空间曲线，参数为弧长 <span
+class="math inline"><em>s</em></span>。则： <span
+class="math display"><em>τ</em>(<em>s</em>) ≡ 0  （挠率恒为零）  ⇔  <strong>r</strong>(<em>s</em>)
 位于某个平面内</span></p>
-<p><img src="/peish_blog/.io//spaceimage.png" srcset="/peish_blog/img/loading.gif" lazyload></p>
+<p><img src="/peish_blog/images/Pasted_image_20250720223956.png" srcset="/peish_blog/img/loading.gif" lazyload /></p>
 <h2 id="证明">证明</h2>
-<h3 id="必要性-taus-0-rightarrow-平面曲线">1. 必要性 (<span class="math inline"><em>τ</em>(<em>s</em>) = 0⇒</span> 平面曲线)</h3>
-<p>假设 <span class="math inline"><em>τ</em>(<em>s</em>) = 0</span>，根据
+<h3 id="必要性-taus-0-rightarrow-平面曲线">1. 必要性 (<span
+class="math inline"><em>τ</em>(<em>s</em>) = 0⇒</span> 平面曲线)</h3>
+<p>假设 <span
+class="math inline"><em>τ</em>(<em>s</em>) = 0</span>，根据
 Frenet-Serret 公式： <span class="math display">$$
 \frac{d\mathbf{B}}{ds} = -\tau(s) \mathbf{N} = 0
-$$</span> 因此副法向量 <span class="math inline"><strong>B</strong>(<em>s</em>)</span> 是常向量 <span class="math inline"><strong>B</strong><sub>0</sub></span>。</p>
+$$</span> 因此副法向量 <span
+class="math inline"><strong>B</strong>(<em>s</em>)</span> 是常向量 <span
+class="math inline"><strong>B</strong><sub>0</sub></span>。</p>
 <p>考虑 <span class="math inline"><strong>r</strong>(<em>s</em>)</span>
 与 <span class="math inline"><strong>B</strong><sub>0</sub></span>
 的点积： <span class="math display">$$
 \frac{d}{ds} (\mathbf{r}(s) \cdot \mathbf{B}_0) = \mathbf{T}(s) \cdot
 \mathbf{B}_0 = 0
-$$</span> 积分得： <span class="math display"><strong>r</strong>(<em>s</em>) ⋅ <strong>B</strong><sub>0</sub> = <em>D</em>  (常数)</span>
+$$</span> 积分得： <span
+class="math display"><strong>r</strong>(<em>s</em>) ⋅ <strong>B</strong><sub>0</sub> = <em>D</em>  (常数)</span>
 即 <span class="math inline"><strong>r</strong>(<em>s</em>)</span>
-满足平面方程 <span class="math inline"><strong>B</strong><sub>0</sub> ⋅ <strong>r</strong>(<em>s</em>) = <em>D</em></span>，故为平面曲线。</p>
-<h3 id="充分性-平面曲线-rightarrow-taus-0">2. 充分性 (平面曲线 <span class="math inline"> ⇒ <em>τ</em>(<em>s</em>) = 0</span>)</h3>
+满足平面方程 <span
+class="math inline"><strong>B</strong><sub>0</sub> ⋅ <strong>r</strong>(<em>s</em>) = <em>D</em></span>，故为平面曲线。</p>
+<h3 id="充分性-平面曲线-rightarrow-taus-0">2. 充分性 (平面曲线 <span
+class="math inline"> ⇒ <em>τ</em>(<em>s</em>) = 0</span>)</h3>
 <p>设 <span class="math inline"><strong>r</strong>(<em>s</em>)</span>
-在平面 <span class="math inline"><strong>a</strong> ⋅ <strong>r</strong> = <em>D</em></span>
-内，则： <span class="math display"><strong>r</strong>(<em>s</em>) ⋅ <strong>a</strong> = <em>D</em></span>
-对 <span class="math inline"><em>s</em></span> 求导： <span class="math display"><strong>T</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
-再求导： <span class="math display"><em>κ</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0 ⇒ <strong>N</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
+在平面 <span
+class="math inline"><strong>a</strong> ⋅ <strong>r</strong> = <em>D</em></span>
+内，则： <span
+class="math display"><strong>r</strong>(<em>s</em>) ⋅ <strong>a</strong> = <em>D</em></span>
+对 <span class="math inline"><em>s</em></span> 求导： <span
+class="math display"><strong>T</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
+再求导： <span
+class="math display"><em>κ</em>(<em>s</em>)<strong>N</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0 ⇒ <strong>N</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
 再求导： <span class="math display">$$
 \frac{d\mathbf{N}}{ds} \cdot \mathbf{a} = 0
-$$</span> 由 Frenet-Serret 公式： <span class="math display">(−<em>κ</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)) ⋅ <strong>a</strong> = 0 ⇒ <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
-因为 <span class="math inline"><strong>B</strong> ∥ <strong>a</strong></span>，所以
+$$</span> 由 Frenet-Serret 公式： <span
+class="math display">(−<em>κ</em>(<em>s</em>)<strong>T</strong>(<em>s</em>) + <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>)) ⋅ <strong>a</strong> = 0 ⇒ <em>τ</em>(<em>s</em>)<strong>B</strong>(<em>s</em>) ⋅ <strong>a</strong> = 0</span>
+因为 <span
+class="math inline"><strong>B</strong> ∥ <strong>a</strong></span>，所以
 <span class="math inline"><em>τ</em>(<em>s</em>) = 0</span>。</p>
 <h1 id="bezier曲线自适应采样绘制曲线">Bezier曲线自适应采样绘制曲线</h1>
 <h2 id="bezier曲线介绍">Bezier曲线介绍</h2>
 <h3 id="数学表达式">数学表达式</h3>
-<p><span class="math display"><em>B</em>(<em>t</em>) = <em>Σ</em><em>B</em><em>ᵢ</em>, <em>ₙ</em>(<em>t</em>) · <em>P</em><em>ᵢ</em>, <em>t</em> ∈ [0, 1]</span>
-其中 - <span class="math inline"><em>B</em><em>ᵢ</em>, <em>ₙ</em>(<em>t</em>) = <em>C</em>(<em>n</em>, <em>i</em>) · <em>t</em><em>ⁱ</em> · (1 − <em>t</em>)<em>ⁿ</em>⁻<em>ⁱ</em></span>，<span class="math inline"><em>C</em>(<em>n</em>, <em>i</em>)</span>是二项式系数，<span class="math inline"><em>B</em><sub><em>i</em>, <em>n</em></sub>(<em>t</em>)</span>被称为伯恩斯坦多项式。
-- <span class="math inline"><em>P</em><sub><em>i</em></sub></span>是控制点。</p>
+<p><span
+class="math display"><em>B</em>(<em>t</em>) = <em>Σ</em><em>B</em><em>ᵢ</em>, <em>ₙ</em>(<em>t</em>) · <em>P</em><em>ᵢ</em>, <em>t</em> ∈ [0, 1]</span>
+其中 - <span
+class="math inline"><em>B</em><em>ᵢ</em>, <em>ₙ</em>(<em>t</em>) = <em>C</em>(<em>n</em>, <em>i</em>) · <em>t</em><em>ⁱ</em> · (1 − <em>t</em>)<em>ⁿ</em>⁻<em>ⁱ</em></span>，<span
+class="math inline"><em>C</em>(<em>n</em>, <em>i</em>)</span>是二项式系数，<span
+class="math inline"><em>B</em><sub><em>i</em>, <em>n</em></sub>(<em>t</em>)</span>被称为伯恩斯坦多项式。
+- <span
+class="math inline"><em>P</em><sub><em>i</em></sub></span>是控制点。</p>
 <h3 id="伯恩斯坦多项式性质介绍">伯恩斯坦多项式性质介绍</h3>
 <h4 id="凸包性">凸包性</h4>
-<p>注意到，Bezier曲线公式形式是一个[[仿射组合]]，因为<span class="math inline"><em>B</em><sub><em>i</em>, <em>n</em></sub> &gt; 0</span>并且<span class="math inline">$\sum^{n}_{i = 0} B_{i,n}(t) = 1$</span>
+<p>注意到，Bezier曲线公式形式是一个[[仿射组合]]，因为<span
+class="math inline"><em>B</em><sub><em>i</em>, <em>n</em></sub> &gt; 0</span>并且<span
+class="math inline">$\sum^{n}_{i = 0} B_{i,n}(t) = 1$</span>
 ，保证了贝塞尔曲线始终位于控制点的<strong>凸包</strong>内。这一性质在图形学中至关重要，因为它确保了曲线不会失控地偏离控制点。
 #### 端点插值
 伯恩斯坦基组合曲线<strong>精确通过首尾控制点</strong>，便于直观控制</p>
 <p>基于以上两点原因：几何建模中更偏爱伯恩斯坦多项式。</p>
 <h2 id="弧长参数s转化一般参数t">弧长参数s转化一般参数t</h2>
 <h2 id="弧长参数下的曲率定义">1. 弧长参数下的曲率定义</h2>
-<p>对于以<strong>弧长</strong> <span class="math inline"><em>s</em></span> 为参数的曲线 <span class="math inline"><strong>r</strong>(<em>s</em>)</span>，曲率定义为：</p>
+<p>对于以<strong>弧长</strong> <span
+class="math inline"><em>s</em></span> 为参数的曲线 <span
+class="math inline"><strong>r</strong>(<em>s</em>)</span>，曲率定义为：</p>
 <p><span class="math display">$$
 \kappa(s) = \left\| \frac{dT}{ds} \right\| = \|\mathbf{r}''(s)\|
 $$</span></p>
-<p>其中： - <span class="math inline"><em>T</em>(<em>s</em>) = <strong>r</strong><sup>′</sup>(<em>s</em>)</span>
-是单位切向量 - <span class="math inline">∥<strong>r</strong><sup>′</sup>(<em>s</em>)∥ ≡ 1</span>
+<p>其中： - <span
+class="math inline"><em>T</em>(<em>s</em>) = <strong>r</strong><sup>′</sup>(<em>s</em>)</span>
+是单位切向量 - <span
+class="math inline">∥<strong>r</strong><sup>′</sup>(<em>s</em>)∥ ≡ 1</span>
 （弧长参数的性质）</p>
-<h2 id="任意参数-t-的转换推导">2. 任意参数 <span class="math inline"><em>t</em></span> 的转换推导</h2>
+<h2 id="任意参数-t-的转换推导">2. 任意参数 <span
+class="math inline"><em>t</em></span> 的转换推导</h2>
 <h3 id="参数变换关系">2.1 参数变换关系</h3>
-<p>对任意参数 <span class="math inline"><em>t</em></span>，弧长微分关系为：</p>
+<p>对任意参数 <span
+class="math inline"><em>t</em></span>，弧长微分关系为：</p>
 <p><span class="math display">$$
 ds = \|\mathbf{r}'(t)\| dt \quad \Rightarrow \quad \frac{d}{ds} =
 \frac{1}{\|\mathbf{r}'(t)\|} \frac{d}{dt}
