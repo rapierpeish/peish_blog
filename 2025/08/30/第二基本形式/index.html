@@ -1,0 +1,937 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/peish_blog/img/fluid.png">
+  <link rel="icon" href="/peish_blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Peish.L">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第二基本形式讲义 引言 在前文中我们已通过内积结构定义了曲面上的第一基本形式，它刻画了切空间上的度量结构。为了进一步刻画曲面的弯曲性质，我们引入第二基本形式，它从另一个角度反映曲面的“法向变化率”，即法向量在切空间方向的导数行为。 本文依旧从内积结构出发，使用方向导数构造第二基本形式，揭示其几何意义。 曲面的法向量场 设正则曲面由参数化映射 φ(u, v) : D ⊂ ℝ2 → ℝ3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微分几何4.第二基本形式">
+<meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E7%AC%AC%E4%BA%8C%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="第二基本形式讲义 引言 在前文中我们已通过内积结构定义了曲面上的第一基本形式，它刻画了切空间上的度量结构。为了进一步刻画曲面的弯曲性质，我们引入第二基本形式，它从另一个角度反映曲面的“法向变化率”，即法向量在切空间方向的导数行为。 本文依旧从内积结构出发，使用方向导数构造第二基本形式，揭示其几何意义。 曲面的法向量场 设正则曲面由参数化映射 φ(u, v) : D ⊂ ℝ2 → ℝ3">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-30T04:49:04.170Z">
+<meta property="article:modified_time" content="2025-08-30T05:05:39.518Z">
+<meta property="article:author" content="Peish.L">
+<meta property="article:tag" content="微分几何">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>微分几何4.第二基本形式 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/peish_blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/peish_blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/peish_blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rapierpeish.github.io","root":"/peish_blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/peish_blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/peish_blog/js/utils.js" ></script>
+  <script  src="/peish_blog/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/peish_blog/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/peish_blog/img/background_1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微分几何4.第二基本形式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-30 12:49" pubdate>
+          August 30, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">微分几何4.第二基本形式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第二基本形式讲义">第二基本形式讲义</h1>
+<h2 id="引言">引言</h2>
+<p>在前文中我们已通过内积结构定义了曲面上的第一基本形式，它刻画了切空间上的度量结构。为了进一步刻画曲面的弯曲性质，我们引入<strong>第二基本形式</strong>，它从另一个角度反映曲面的“法向变化率”，即法向量在切空间方向的导数行为。</p>
+<p>本文依旧从内积结构出发，使用方向导数构造第二基本形式，揭示其几何意义。</p>
+<h2 id="曲面的法向量场">曲面的法向量场</h2>
+<p>设正则曲面由参数化映射<br />
+<span
+class="math display"><em>φ</em>(<em>u</em>, <em>v</em>) : <em>D</em> ⊂ ℝ<sup>2</sup> → ℝ<sup>3</sup></span><br />
+其单位法向量定义为 <span
+class="math inline"><strong>n</strong>(<em>u</em>, <em>v</em>)</span>
+<span class="math display">$$
+\mathbf{n}(u,v) = \frac{\varphi_u \times \varphi_v}{\|\varphi_u \times
+\varphi_v\|}
+$$</span></p>
+<p>这是曲面上每一点处法向量的标准构造，方向与切平面正交，模长为1。</p>
+<h2 id="建立局部自然标架">建立局部自然标架</h2>
+<p>在曲面上选取一点 <span
+class="math inline"><em>p</em> = <em>φ</em>(<em>u</em><sub>0</sub>, <em>v</em><sub>0</sub>)</span>，设曲面的参数化为
+<span
+class="math inline"><em>φ</em>(<em>u</em>, <em>v</em>)</span>。在该点处，<span
+class="math inline"><em>φ</em><sub><em>u</em></sub></span> 与 <span
+class="math inline"><em>φ</em><sub><em>v</em></sub></span>
+是一组线性无关的切向量，张成切平面 <span
+class="math inline"><em>T</em><sub><em>p</em></sub><em>S</em></span>。在该点构造曲面的自然标架<span
+class="math inline">{<strong>e</strong><sub>1</sub>, <strong>e</strong><sub>2</sub>, <strong>n</strong>}</span>：</p>
+<p>切向方向一： <span class="math display">$$
+\mathbf{e}_1 = \frac{\varphi_u}{\|\varphi_u\|}
+$$</span> 切向方向二： <span class="math display">$$
+\mathbf{e}_2 = \frac{\varphi_v}{\|\varphi_v\|}
+$$</span> <span
+class="math inline"><strong>e</strong><sub>1</sub></span> 与 <span
+class="math inline"><strong>e</strong><sub>2</sub></span>
+一般不正交，除非曲面参数化是正交的。</p>
+<p>法向方向： <span class="math display">$$
+\mathbf{n} = \frac{\varphi_u \times \varphi_v}{\|\varphi_u \times
+\varphi_v\|}
+$$</span></p>
+<p>这个标架 <span
+class="math inline">{<strong>e</strong><sub>1</sub>, <strong>e</strong><sub>2</sub>, <strong>n</strong>}</span>
+是曲面上一组局部自然标架，其中 <span
+class="math inline"><strong>e</strong><sub>1</sub>, <strong>e</strong><sub>2</sub></span>
+张成切平面，<span class="math inline"><strong>n</strong></span>
+是法向量，满足：</p>
+<p><span
+class="math display">⟨<strong>e</strong><sub>1</sub>, <strong>n</strong>⟩ = ⟨<strong>e</strong><sub>2</sub>, <strong>n</strong>⟩ = 0</span>
+<strong>注意：</strong><span
+class="math inline"><strong>e</strong><sub>1</sub></span> 和 <span
+class="math inline"><strong>e</strong><sub>2</sub></span> 并不一定正交。
+&gt; 我之前记错了：<span
+class="math inline"><strong>e</strong><sub>1</sub></span> 和 <span
+class="math inline"><strong>e</strong><sub>2</sub></span>是正交的，实际上不一定正交
+&gt; 讨论曲面的流程和曲线一致：讨论点<span
+class="math inline"><em>p</em></span>的微小运动，对标架三个向量分量的导数。</p>
+<h2
+id="法向量在切向方向的变化率方向导数">法向量在切向方向的变化率（方向导数）</h2>
+<p>在自然标架<span
+class="math inline">{<strong>e</strong><sub>1</sub>, <strong>e</strong><sub>2</sub>, <strong>n</strong>}</span>下，我们讨论<span
+class="math inline"><strong>n</strong></span>沿切方向<span
+class="math inline"><strong>v</strong></span>的变换。 设切方向<span
+class="math inline"><strong>v</strong></span>： <span
+class="math display"><strong>v</strong> = <em>a</em> <strong>e</strong><sub>1</sub> + <em>b</em> <strong>e</strong><sub>2</sub></span>
+我们关心法向量<span
+class="math inline"><strong>n</strong></span>沿方向<span
+class="math inline"><strong>v</strong></span>的变化率，即方向导数：
+<span class="math display">$$
+D_{\mathbf{v}} \mathbf{n} = a\,\frac{\partial \mathbf{n}}{\partial u} +
+b\,\frac{\partial \mathbf{n}}{\partial v}
+$$</span> 方向导数的几何意义：在<span
+class="math inline"><em>p</em></span>点处，若沿<span
+class="math inline"><strong>v</strong></span>方向前进，单位法向量的变换率
+（1）若 <span
+class="math inline"><em>D</em><sub><strong>v</strong></sub><strong>n</strong> = 0</span>，表示曲面在该方向上是“平的”；<br />
+（2）若 <span
+class="math inline"><em>D</em><sub><strong>v</strong></sub><strong>n</strong> ≠ 0</span>，表示法向量在该方向发生变化，曲面弯曲。
+&gt; 用<span
+class="math inline"><em>D</em><sub><strong>v</strong></sub><strong>n</strong></span>的内积来描述某个方向上的弯曲程度是不错的想法。</p>
+<h2 id="切向量的导数与第二基本形式">切向量的导数与第二基本形式</h2>
+<p>计算方向 <span
+class="math inline"><strong>v</strong> = <em>a</em> <em>φ</em><sub><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em></sub></span>
+上的切向量变化率。
+我们关心的是沿该方向构造的曲线的“加速度”，即切向量对自身的导数： -
+沿着方向 <span class="math inline"><strong>v</strong></span> 对 <span
+class="math inline"><em>φ</em><sub><em>u</em></sub></span> 求导，有：
+<span
+class="math display"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><em>u</em></sub> = <em>a</em> <em>φ</em><sub><em>u</em><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>u</em><em>v</em></sub></span>
+- 同理： <span
+class="math display"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><em>v</em></sub> = <em>a</em> <em>φ</em><sub><em>u</em><em>v</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em><em>v</em></sub></span></p>
+<p>考虑复合向量函数： <span
+class="math display"><em>φ</em><sub><strong>v</strong></sub>(<em>u</em>, <em>v</em>) := <em>a</em> <em>φ</em><sub><em>u</em></sub>(<em>u</em>, <em>v</em>) + <em>b</em> <em>φ</em><sub><em>v</em></sub>(<em>u</em>, <em>v</em>)</span></p>
+<p>它是方向 <span class="math inline"><strong>v</strong></span>
+上的切向量。我们要对它在方向 <span
+class="math inline"><strong>v</strong></span> 上求导，即方向导数： <span
+class="math display"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub> = <em>a</em><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><em>u</em></sub> + <em>b</em><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><em>v</em></sub></span>
+展开这个式子： <span class="math display">$$
+\begin{aligned}
+D_{\mathbf{v}} \varphi_{\mathbf{v}} &amp;= a^2\,\varphi_{uu} +
+ab\,\varphi_{uv} + ab\,\varphi_{vu} + b^2\,\varphi_{vv} \\
+&amp;= a^2\,\varphi_{uu} + 2ab\,\varphi_{uv} + b^2\,\varphi_{vv}
+\end{aligned}
+$$</span> 其中用到了偏导对称性 <span
+class="math inline"><em>φ</em><sub><em>u</em><em>v</em></sub> = <em>φ</em><sub><em>v</em><em>u</em></sub></span>。
+&gt;正则曲面应该满足<span
+class="math inline"><em>C</em><sup>2</sup></span>连续，根据<span
+class="math inline"><em>S</em><em>c</em><em>h</em><em>w</em><em>a</em><em>r</em><em>z</em></span>定理，点<span
+class="math inline"><em>p</em></span>的领域附近满足偏导对称性</p>
+<p>将 <span
+class="math inline"><strong>v</strong> = <em>a</em> <em>φ</em><sub><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em></sub></span>
+代入后，我们可以计算 <span
+class="math inline"><em>φ</em><sub><strong>v</strong></sub> := <em>a</em> <em>φ</em><sub><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em></sub></span>
+的导数： <span
+class="math display"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub> = <em>a</em><sup>2</sup> <em>φ</em><sub><em>u</em><em>u</em></sub> + 2<em>a</em><em>b</em> <em>φ</em><sub><em>u</em><em>v</em></sub> + <em>b</em><sup>2</sup> <em>φ</em><sub><em>v</em><em>v</em></sub></span>
+将<span
+class="math inline"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub></span>投影到<span
+class="math inline"><strong>n</strong></span>做内积： <span
+class="math display">⟨<em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub>, <strong>n</strong>⟩ = ⟨<em>a</em><sup>2</sup> <em>φ</em><sub><em>u</em><em>u</em></sub> + 2<em>a</em><em>b</em> <em>φ</em><sub><em>u</em><em>v</em></sub> + <em>b</em><sup>2</sup> <em>φ</em><sub><em>v</em><em>v</em></sub>, <strong>n</strong>⟩</span>
+内积的线性性质展开： <span
+class="math display">⟨<em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub>, <strong>n</strong>⟩ = <em>a</em><sup>2</sup>⟨<em>φ</em><sub><em>u</em><em>u</em></sub>, <strong>n</strong>⟩ + 2<em>a</em><em>b</em>⟨<em>φ</em><sub><em>u</em><em>v</em></sub>, <strong>n</strong>⟩ + <em>b</em><sup>2</sup>⟨<em>φ</em><sub><em>v</em><em>v</em></sub>, <strong>n</strong>⟩</span>
+定义三个基本量<span
+class="math inline"><em>L</em>, <em>M</em>, <em>N</em></span>： <span
+class="math display"><em>L</em> = ⟨<em>φ</em><sub><em>u</em><em>u</em></sub>, <strong>n</strong>⟩, <em>M</em> = ⟨<em>φ</em><sub><em>u</em><em>v</em></sub>, <strong>n</strong>⟩, <em>N</em> = ⟨<em>φ</em><sub><em>v</em><em>v</em></sub>, <strong>n</strong>⟩</span>
+将<span class="math inline"><em>a</em>, <em>b</em></span>替换成点<span
+class="math inline"><em>p</em></span>的微小位移<span
+class="math inline"><em>d</em><em>u</em>, <em>d</em><em>v</em></span>描述，得到曲面的第二基本形式：
+<span
+class="math display">II(<strong>v</strong>, <strong>v</strong>) = ⟨<em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub>, <strong>n</strong>⟩ = <em>L</em><em>d</em><em>u</em><sup>2</sup> + 2<em>M</em><em>d</em><em>u</em><em>d</em><em>v</em> + <em>N</em><em>d</em><em>v</em><sup>2</sup></span>
+### 总结 - 曲面第二基本形式是点<span
+class="math inline"><em>p</em></span>沿<span
+class="math inline"><strong>v</strong></span>方向的微小移动，引起切向量的微小变化在法向的投影</p>
+<h2 id="法曲率">法曲率</h2>
+<p>将<span
+class="math inline"><em>D</em><sub><strong>v</strong></sub><em>φ</em><sub><strong>v</strong></sub></span>投影到法向量上和<span
+class="math inline">𝕟</span>做内积，得到该方向上的<strong>法向加速度分量</strong>，即<strong>法曲率</strong><span
+class="math inline"><em>k</em><sub><em>n</em></sub>(<strong>v</strong>)</span>：
+<span class="math display">$$
+k_n(\mathbf{v}) :=\frac{\langle D_{\mathbf{v}}\mathbf{n},\, \mathbf{v}
+\rangle}{\| \mathbf{v}\|^2} =
+\frac{\mathrm{II(\mathbf{v},\mathbf{v})}}{\mathrm{I(\mathbf{v},\mathbf{v})}}
+$$</span> 回忆第一基本形式： <span
+class="math display"><em>I</em>(<strong>v</strong>, <strong>v</strong>) = ⟨<strong>v</strong>, <strong>v</strong>⟩ = ∥<strong>v</strong>∥<sup>2</sup></span></p>
+<h2 id="几何意义">几何意义</h2>
+<ul>
+<li>第一基本形式刻画的是 <strong>切空间上的内积</strong>；</li>
+<li>第二基本形式刻画的是
+<strong>法向量在切方向上的变化率</strong>。</li>
+</ul>
+<h2 id="例题">例题</h2>
+<h3 id="计算椭圆曲面的法曲率">计算椭圆曲面的法曲率</h3>
+<p>设曲面由参数化方程： <span
+class="math display"><em>φ</em>(<em>u</em>, <em>v</em>) = (<em>u</em>, <em>v</em>, <em>u</em><sup>2</sup> + <em>v</em><sup>2</sup>)</span>
+一阶导数 <span
+class="math display"><em>φ</em><sub><em>u</em></sub> = (1, 0, 2<em>u</em>),  <em>φ</em><sub><em>v</em></sub> = (0, 1, 2<em>v</em>)</span>
+第一基本形式定义为： <span
+class="math display">I = <em>E</em> <em>d</em><em>u</em><sup>2</sup> + 2<em>F</em> <em>d</em><em>u</em> <em>d</em><em>v</em> + <em>G</em> <em>d</em><em>v</em><sup>2</sup></span>
+计算内积得到：</p>
+<p><span
+class="math display"><em>E</em> = ⟨<em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>u</em></sub>⟩ = 1 + 4<em>u</em><sup>2</sup>, <em>F</em> = ⟨<em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>v</em></sub>⟩ = 4<em>u</em><em>v</em>, <em>G</em> = ⟨<em>φ</em><sub><em>v</em></sub>, <em>φ</em><sub><em>v</em></sub>⟩ = 1 + 4<em>v</em><sup>2</sup></span>
+<span
+class="math display">I = (1 + 4<em>u</em><sup>2</sup>) <em>d</em><em>u</em><sup>2</sup> + 8<em>u</em><em>v</em> <em>d</em><em>u</em> <em>d</em><em>v</em> + (1 + 4<em>v</em><sup>2</sup>) <em>d</em><em>v</em><sup>2</sup></span>
+单位法向量由 <span
+class="math inline"><em>φ</em><sub><em>u</em></sub> × <em>φ</em><sub><em>v</em></sub></span>得：
+<span class="math display">$$
+\varphi_{u}\times\varphi_{v}=\begin{vmatrix}\mathbf{i}&amp;\mathbf{j}&amp;\mathbf{k}
+\\ 1&amp;0&amp;2u\\ 0&amp;1&amp;2v\end{vmatrix}=(-2u,-2v,1)
+$$</span> 归一化后得单位法向量： <span class="math display">$$
+\mathbf{n} = \frac{(-2u, -2v, 1)}{\sqrt{4u^2 + 4v^2 + 1}}
+$$</span> 二阶导数： <span
+class="math display"><em>φ</em><sub><em>u</em><em>u</em></sub>​ = (0, 0, 2), <em>φ</em><sub><em>u</em><em>v</em></sub>​ = (0, 0, 0), <em>φ</em><sub><em>v</em><em>v</em></sub>​ = (0, 0, 2)</span>
+计算<span
+class="math inline"><em>L</em>, <em>M</em>, <em>N</em></span>： 其中：
+<span class="math display">$$
+L = \langle \varphi_{uu}, \mathbf{n} \rangle = \langle (0,0,2),
+\mathbf{n} \rangle = \frac{2}{\sqrt{4u^2 + 4v^2 + 1}}  ​
+$$</span> <span
+class="math display"><em>M</em> = ⟨<em>φ</em><sub><em>u</em><em>v</em></sub>, <strong>n</strong>⟩ = 0</span>
+<span class="math display">$$
+N = \langle \varphi_{vv}, \mathbf{n} \rangle = \frac{2}{\sqrt{4u^2 +
+4v^2 + 1}}
+$$</span> 带入第二基本形式<span
+class="math inline">II = <em>L</em> <em>d</em><em>u</em><sup>2</sup> + 2<em>M</em> <em>d</em><em>u</em> <em>d</em><em>v</em> + <em>N</em> <em>d</em><em>v</em><sup>2</sup></span>:
+<span class="math display">$$
+\mathrm{II} = \frac{2}{\sqrt{4u^2 + 4v^2 + 1}}(du^2 + dv^2)
+$$</span> 法曲率 取任意方向 <span
+class="math inline"><strong>v</strong> = <em>a</em>, <em>φ</em><sub><em>u</em></sub> + <em>b</em>, <em>φ</em><sub><em>v</em></sub></span>，则：
+<span class="math display">$$
+\mathrm{II}(\mathbf{v}, \mathbf{v}) = a^2 L + 2ab M + b^2 N =
+\frac{2(a^2 + b^2)}{\sqrt{4u^2 + 4v^2 + 1}}
+$$</span> 第一基本形式： <span
+class="math display">I(<strong>v</strong>, <strong>v</strong>) = <em>a</em><sup>2</sup><em>E</em> + 2<em>a</em><em>b</em><em>F</em> + <em>b</em><sup>2</sup><em>G</em> = <em>a</em><sup>2</sup>(1 + 4<em>u</em><sup>2</sup>) + 8<em>a</em><em>b</em><em>u</em><em>v</em> + <em>b</em><sup>2</sup>(1 + 4<em>v</em><sup>2</sup>)</span>
+因此法曲率： <span class="math display">$$
+k_n(\mathbf{v}) = \frac{\mathrm{II}(\mathbf{v},
+\mathbf{v})}{\mathrm{I}(\mathbf{v}, \mathbf{v})} = \frac{2(a^2 + b^2)}{
+\sqrt{4u^2 + 4v^2 + 1} \cdot \left( a^2(1 + 4u^2) + 8abuv + b^2(1 +
+4v^2) \right) }
+$$</span> 计算<span
+class="math inline">(<em>u</em>, <em>v</em>) = (0, 0)</span>的法曲率：
+<span
+class="math display"><em>E</em> = <em>G</em> = 1,  <em>F</em> = 0,  <em>L</em> = <em>N</em> = 2,  <em>M</em> = 0</span>
+任意方向 <span
+class="math inline"><strong>v</strong> = <em>a</em> <em>φ</em><sub><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em></sub></span>
+上有： <span
+class="math display">I = <em>a</em><sup>2</sup> + <em>b</em><sup>2</sup>,  II = 2(<em>a</em><sup>2</sup> + <em>b</em><sup>2</sup>)</span>
+因此法曲率为： <span class="math display">$$
+k_n(\mathbf{v}) = \frac{2(a^2 + b^2)}{a^2 + b^2} = 2
+$$</span> &gt; 抛物面在原点的法曲率为常数<span
+class="math inline">2</span>，<strong>任意方向上都一样</strong>，说明该点为椭圆点（正曲率）</p>
+<h2 id="第二基本形式公式总结">第二基本形式公式总结</h2>
+<h2 id="定义">1. 定义</h2>
+<p>第二基本形式的系数为： <span
+class="math display"><em>L</em> = <strong>r</strong><sub><em>u</em><em>u</em></sub> ⋅ <strong>n</strong>,  <em>M</em> = <strong>r</strong><sub><em>u</em><em>v</em></sub> ⋅ <strong>n</strong>,  <em>N</em> = <strong>r</strong><sub><em>v</em><em>v</em></sub> ⋅ <strong>n</strong>.</span></p>
+<h2 id="矩阵表达">2. 矩阵表达</h2>
+<p>第二基本形式的矩阵为： <span class="math display">$$
+II = \begin{pmatrix}
+L &amp; M \\
+M &amp; N
+\end{pmatrix}.
+$$</span></p>
+<h2 id="张量表达">3. 张量表达</h2>
+<p>第二基本形式的张量形式为： <span
+class="math display"><em>h</em><sub><em>i</em><em>j</em></sub> = <strong>r</strong><sub><em>i</em><em>j</em></sub> ⋅ <strong>n</strong>,</span>
+其中： <span
+class="math display"><em>h</em><sub>11</sub> = <em>L</em>,  <em>h</em><sub>12</sub> = <em>h</em><sub>21</sub> = <em>M</em>,  <em>h</em><sub>22</sub> = <em>N</em>.</span></p>
+<h2 id="几何意义-1">4. 几何意义</h2>
+<ul>
+<li>描述曲面的弯曲性质。</li>
+<li>计算法曲率：<span class="math inline">$\kappa_n = \frac{h_{ij} v^i
+v^j}{g_{ij} v^i v^j}$</span>。</li>
+<li>计算高斯曲率：<span class="math inline">$K = \frac{LN - M^2}{EG -
+F^2}$</span>。</li>
+</ul>
+<h2 id="总结">5. 总结</h2>
+<ul>
+<li>第二基本形式描述了曲面的外在几何。</li>
+<li>矩阵表达：<span class="math inline">$II = \begin{pmatrix} L &amp; M
+\\ M &amp; N \end{pmatrix}$</span>。</li>
+<li>张量表达：<span
+class="math inline"><em>h</em><sub><em>i</em><em>j</em></sub> = <strong>r</strong><sub><em>i</em><em>j</em></sub> ⋅ <strong>n</strong></span>。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/peish_blog/categories/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="category-chain-item">微分几何</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/peish_blog/tags/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="print-no-link">#微分几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>微分几何4.第二基本形式</div>
+      <div>https://rapierpeish.github.io/2025/08/30/第二基本形式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Peish.L</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 30, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/30/%E7%AC%AC%E4%B8%80%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/" title="微分几何3.第一基本形式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">微分几何3.第一基本形式</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/30/%E6%9B%B2%E9%9D%A2%E6%9B%B2%E7%8E%87/" title="微分几何6.曲面曲率">
+                        <span class="hidden-mobile">微分几何6.曲面曲率</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/peish_blog/js/events.js" ></script>
+<script  src="/peish_blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/peish_blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/peish_blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/peish_blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

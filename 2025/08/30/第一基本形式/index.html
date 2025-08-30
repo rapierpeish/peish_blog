@@ -1,0 +1,954 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/peish_blog/img/fluid.png">
+  <link rel="icon" href="/peish_blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Peish.L">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="建立曲面上的内积度量 给定ℝ𝟛中正则曲面S和S上任意一点p，设曲面由参数 φ(u, v) : D → ℝ3 给出，在(u, v)参数坐标系下如何定义p点的内积度量呢？该结构使得我们能够定义： - 曲面上切向量的长度； - 进而导出第一基本形式。 建立局部内积空间 定义切平面基向量 设曲面由光滑参数化映射 φ(u, v) : D ⊂ ℝ2 → ℝ3 给出，令 p &#x3D; φ(u0, v0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微分几何3.第一基本形式">
+<meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E7%AC%AC%E4%B8%80%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="建立曲面上的内积度量 给定ℝ𝟛中正则曲面S和S上任意一点p，设曲面由参数 φ(u, v) : D → ℝ3 给出，在(u, v)参数坐标系下如何定义p点的内积度量呢？该结构使得我们能够定义： - 曲面上切向量的长度； - 进而导出第一基本形式。 建立局部内积空间 定义切平面基向量 设曲面由光滑参数化映射 φ(u, v) : D ⊂ ℝ2 → ℝ3 给出，令 p &#x3D; φ(u0, v0">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-30T04:49:04.170Z">
+<meta property="article:modified_time" content="2025-08-30T05:05:39.518Z">
+<meta property="article:author" content="Peish.L">
+<meta property="article:tag" content="微分几何">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>微分几何3.第一基本形式 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/peish_blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/peish_blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/peish_blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rapierpeish.github.io","root":"/peish_blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/peish_blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/peish_blog/js/utils.js" ></script>
+  <script  src="/peish_blog/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/peish_blog/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/peish_blog/img/background_1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="微分几何3.第一基本形式"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-30 12:49" pubdate>
+          August 30, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">微分几何3.第一基本形式</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="建立曲面上的内积度量">建立曲面上的内积度量</h2>
+<p>给定<span class="math inline">ℝ<sup>𝟛</sup></span>中正则曲面<span
+class="math inline"><em>S</em></span>和<span
+class="math inline"><em>S</em></span>上任意一点<span
+class="math inline"><em>p</em></span>，设曲面由参数 <span
+class="math inline"><em>φ</em>(<em>u</em>, <em>v</em>) : <em>D</em> → ℝ<sup>3</sup></span>
+给出，在<span
+class="math inline">(<em>u</em>, <em>v</em>)</span>参数坐标系下如何定义<span
+class="math inline"><em>p</em></span>点的内积度量呢？该结构使得我们能够定义：
+- 曲面上切向量的长度； - 进而导出<strong>第一基本形式</strong>。</p>
+<h2 id="建立局部内积空间">建立局部内积空间</h2>
+<h3 id="定义切平面基向量">定义切平面基向量</h3>
+<p>设曲面由光滑参数化映射 <span
+class="math inline"><em>φ</em>(<em>u</em>, <em>v</em>) : <em>D</em> ⊂ ℝ<sup>2</sup> → ℝ<sup>3</sup></span>
+给出，令 <span
+class="math inline"><em>p</em> = <em>φ</em>(<em>u</em><sub>0</sub>, <em>v</em><sub>0</sub>)</span>。
+定义两个偏导数向量（称为参数基向量）： <span class="math display">$$
+φ_{u​}=\left. \frac{∂φ}{∂u}
+\right|_{​​(u0​,v0​)}​,φ_v​=\left.\frac{∂φ}{∂v}\right|_{​​(u0​,v0​)}​
+$$</span> 由于 <span class="math inline"><em>φ</em></span>
+是正则参数化，我们有 <span
+class="math inline"><em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>v</em></sub></span>
+在 <span class="math inline"><em>p</em></span> 处线性无关。</p>
+<h3 id="建立切空间">建立切空间</h3>
+<p><span class="math inline"><em>S</em></span> 在 <span
+class="math inline"><em>p</em></span>
+点的<strong>切空间</strong>可定义为： <span
+class="math display"><em>T</em><sub><em>p</em></sub>(<em>S</em>) = <em>s</em><em>p</em><em>a</em><em>n</em>{<em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>v</em></sub>}</span>
+任意切向量 <span
+class="math inline"><em>w</em> ∈ <em>T</em><sub><em>p</em></sub>(<em>S</em>)</span>
+都可以唯一地表示为： <span
+class="math display"><em>w</em> = <em>a</em><em>φ</em><sub><em>u</em></sub> + <em>b</em><em>φ</em><sub><em>v</em></sub>, <em>其</em><em>中</em><em>a</em>, <em>b</em> ∈ ℝ</span></p>
+<h3 id="利用-gram-行列式定义内积">利用 <span
+class="math inline"><em>G</em><em>r</em><em>a</em><em>m</em></span>
+行列式定义内积</h3>
+<p>我希望在切空间<span
+class="math inline"><em>T</em><sub><em>p</em></sub>(<em>S</em>)</span>上定义内积
+<span
+class="math inline">⟨⋅, ⋅⟩<sub><em>p</em></sub></span>，采用如下方式构造该内积：
+首先令： <span
+class="math display"><em>E</em> := ⟨<em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>u</em></sub>⟩,  <em>F</em> := ⟨<em>φ</em><sub><em>u</em></sub>, <em>φ</em><sub><em>v</em></sub>⟩,  <em>G</em> := ⟨<em>φ</em><sub><em>v</em></sub>, <em>φ</em><sub><em>v</em></sub>⟩</span>
+建立两个任意两个切向量<span class="math inline"><em>w</em></span>和<span
+class="math inline"><em>w</em><sup>′</sup></span>： <span
+class="math display"><em>w</em> = <em>a</em><em>φ</em><sub><em>u</em></sub> + <em>b</em><em>φ</em><sub><em>v</em></sub>,  <em>w</em><sup>′</sup> = <em>a</em><sup>′</sup><em>φ</em><sub><em>u</em></sub> + <em>b</em><sup>′</sup><em>φ</em><sub><em>v</em></sub></span>
+将<span class="math inline"><em>E</em></span>，<span
+class="math inline"><em>F</em></span>，<span
+class="math inline"><em>G</em></span>带入<span
+class="math inline"><em>G</em><em>r</em><em>a</em><em>m</em></span>行列式计算<span
+class="math inline">⟨<em>w</em>, <em>w</em><sup>′</sup>⟩</span>，得到切空间<span
+class="math inline"><em>T</em><sub><em>p</em></sub>(<em>S</em>)</span>的内积结构：
+<span
+class="math display">⟨<em>w</em>, <em>w</em><sup>′</sup>⟩<sub><em>p</em></sub> := <em>a</em><em>a</em><sup>′</sup><em>E</em> + (<em>a</em><em>b</em><sup>′</sup> + <em>a</em><sup>′</sup><em>b</em>)<em>F</em> + <em>b</em><em>b</em><sup>′</sup><em>G</em></span></p>
+<h3 id="验证内积空间公理">验证内积空间公理</h3>
+<p><strong>对称性</strong>： <span
+class="math display">⟨<em>w</em>, <em>w</em><sup>′</sup>⟩<sub><em>p</em></sub> = ⟨<em>w</em><sup>′</sup>, <em>w</em>⟩<sub><em>p</em></sub>​</span></p>
+<p><strong>双线性性</strong> <span
+class="math display">⟨<em>w</em><sub>1</sub> + <em>w</em><sub>2</sub>, <em>w</em><sup>′</sup>⟩ = ⟨<em>w</em><sub>1</sub>, <em>w</em><sup>′</sup>⟩ + ⟨<em>w</em><sub>2</sub>, <em>w</em><sup>′</sup>⟩</span>
+<span
+class="math display">⟨<em>λ</em><em>w</em>, <em>w</em><sup>′</sup>⟩ = <em>λ</em>⟨<em>w</em>, <em>w</em><sup>′</sup>⟩</span></p>
+<p><strong>正定性</strong>： <span
+class="math display">⟨<em>w</em>, <em>w</em>⟩<sub><em>p</em></sub> = <em>a</em><sup>2</sup><em>E</em> + 2<em>a</em><em>b</em><em>F</em> + <em>b</em><sup>2</sup><em>G</em> =  : <em>Q</em>(<em>a</em>, <em>b</em>)</span>
+&gt; 这个性质稍后证明。</p>
+<p>因此，这个定义构成了 <span
+class="math inline"><em>T</em><sub><em>p</em></sub>(<em>S</em>)</span>
+上的一个良好的<strong>内积空间结构</strong>。</p>
+<h2 id="推导第一基本形式">推导第一基本形式</h2>
+<p>将曲面上面的内积结构用微分形式表达： 考虑切平面上任意切向量微分：
+<span
+class="math display"><em>d</em><em>φ</em> = <em>φ</em><sub><em>u</em></sub><em>d</em><em>u</em> + <em>φ</em><sub><em>v</em></sub><em>d</em><em>v</em></span>
+这个结构和切平面上向量结构是一致的： <span
+class="math display"><em>w</em> = <em>a</em><em>φ</em><sub><em>u</em></sub> + <em>b</em><em>φ</em><sub><em>v</em></sub>,  <em>w</em><sup>′</sup> = <em>a</em><sup>′</sup><em>φ</em><sub><em>u</em></sub> + <em>b</em><sup>′</sup><em>φ</em><sub><em>v</em></sub></span>
+<span
+class="math display">⟨<em>w</em>, <em>w</em><sup>′</sup>⟩<sub><em>p</em></sub> := <em>a</em><em>a</em><sup>′</sup><em>E</em> + (<em>a</em><em>b</em><sup>′</sup> + <em>a</em><sup>′</sup><em>b</em>)<em>F</em> + <em>b</em><em>b</em><sup>′</sup><em>G</em></span>
+将全微分带入内积公式中，得到微小位移的长度平方： <span
+class="math display">∥<em>d</em><em>φ</em>∥<sup>2</sup> = ⟨<em>d</em><em>φ</em>, <em>d</em><em>φ</em>⟩ = <em>E</em> <em>d</em><em>u</em><sup>2</sup> + 2<em>F</em> <em>d</em><em>u</em> <em>d</em><em>v</em> + <em>G</em> <em>d</em><em>v</em><sup>2</sup></span>
+这是曲面的<strong>第一基本形式</strong>，记作： <span
+class="math display"><em>I</em> = <em>E</em> <em>d</em><em>u</em><sup>2</sup> + 2<em>F</em> <em>d</em><em>u</em> <em>d</em><em>v</em> + <em>G</em> <em>d</em><em>v</em><sup>2</sup></span></p>
+<p>第一基本形式的张量写法： <span
+class="math display"><em>I</em> = <em>g</em><sub><em>i</em><em>j</em></sub><em>d</em><em>u</em><sup><em>i</em></sup><em>d</em><em>u</em><sup><em>j</em></sup></span>
+<span class="math display">$$
+g_{ij} = \langle
+\varphi_{u^i},\varphi_{u^{j}}\rangle=\begin{pmatrix}E&amp;F \\
+F&amp;G\end{pmatrix}=\begin{pmatrix}\langle\varphi_u,\varphi_u\rangle&amp;\langle\varphi_u,\varphi_v\rangle
+\\
+\langle\varphi_u,\varphi_v\rangle&amp;\langle\varphi_v,\varphi_v\rangle\end{pmatrix}
+$$</span> <span
+class="math inline"><em>g</em><sub><em>i</em><em>j</em></sub></span>被称为参数坐标系的度量矩阵，我将u,v换成了张量中的u,i,j指标。u是固定指标，i,j是哑指标，取值为1,2。</p>
+<h2
+id="证明第一基本形式与参数坐标系无关">证明第一基本形式与参数坐标系无关</h2>
+<h3 id="给定条件">给定条件</h3>
+<p>给定曲面<span class="math inline"><em>S</em></span>的两个参数化： -
+在 <span class="math inline"><em>U</em></span> 中的参数为：<span
+class="math inline">(<em>u</em><sup>1</sup>, <em>u</em><sup>2</sup>)</span>，对应映射为
+<span
+class="math inline"><em>φ</em>(<em>u</em><sup>1</sup>, <em>u</em><sup>2</sup>)</span>
+- 在 <span class="math inline"><em>V</em></span> 中的参数为：<span
+class="math inline">(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>)</span>，对应映射为
+<span
+class="math inline"><em>ψ</em>(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>)</span>
+给定映射链： <span
+class="math display"><em>ψ</em>(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>) = <em>φ</em>(<em>u</em><sup>1</sup>(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>), <em>u</em><sup>2</sup>(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>)) = <em>φ</em>(<em>u</em>(<em>v</em>))</span>
+&gt; <span
+class="math inline"><em>u</em>(<em>v</em>)</span>这个映射一定存在</p>
+<h3
+id="定义两组参数化下的第一基本形式">定义两组参数化下的第一基本形式</h3>
+<p>在 <span
+class="math inline">(<em>u</em><sup>1</sup>, <em>u</em><sup>2</sup>)</span>
+坐标系下，第一基本形式： <span
+class="math display"><em>I</em> = <em>d</em><em>u</em><sup>⊤</sup> ⋅ <em>G</em>(<em>u</em>) ⋅ <em>d</em><em>u</em></span>
+其中 <span class="math inline">$du = \begin{bmatrix} du^1 \ du^2
+\end{bmatrix}$</span>，<span
+class="math inline"><em>G</em>(<em>u</em>)</span> 是 <span
+class="math inline">2 × 2</span> 对称矩阵: <span
+class="math display">$$G(u)=
+\begin{bmatrix}
+\langle\varphi_{u^1},\varphi_{u^1}\rangle &amp;
+\langle\varphi_{u^1},\varphi_{u^2}\rangle \\
+\langle\varphi_{u^2},\varphi_{u^1}\rangle &amp;
+\langle\varphi_{u^2},\varphi_{u^2}\rangle
+\end{bmatrix} = \left (\frac{\partial \varphi}{\partial u} \right
+)^{\top}\left (\frac{\partial \varphi}{\partial u} \right )= \left(
+\frac{\partial \varphi}{\partial u^1}  \frac{\partial \varphi}{\partial
+u^2} \right)^\top \left( \frac{\partial \varphi}{\partial
+u^1}  \frac{\partial \varphi}{\partial u^2} \right)$$</span></p>
+<p>在 <span
+class="math inline">(<em>v</em><sup>1</sup>, <em>v</em><sup>2</sup>)</span>
+坐标系下，第一基本形式为： <span
+class="math display"><em>I</em><sup>′</sup> = <em>d</em><em>v</em><sup>⊤</sup> ⋅ <em>G</em><sup>′</sup>(<em>v</em>) ⋅ <em>d</em><em>v</em></span>
+其中 <span class="math inline">$dv = \begin{bmatrix} dv^1 \ dv^2
+\end{bmatrix}$</span>，<span
+class="math inline"><em>G</em><sup>′</sup>(<em>v</em>)</span> 是 <span
+class="math inline"><em>ψ</em>(<em>v</em>)</span> 的第一基本形式矩阵：
+<span class="math display">$$G(v)=
+\begin{bmatrix}
+\langle\varphi_{v^1},\varphi_{v^1}\rangle &amp;
+\langle\varphi_{v^1},\varphi_{v^2}\rangle \\
+\langle\varphi_{v^2},\varphi_{v^1}\rangle &amp;
+\langle\varphi_{v^2},\varphi_{v^2}\rangle
+\end{bmatrix}= \left (\frac{\partial \psi}{\partial v} \right
+)^{\top}\left (\frac{\partial \psi}{\partial v} \right )= \left(
+\frac{\partial \psi}{\partial v^1}  \frac{\partial \psi}{\partial v^2}
+\right)^\top \left( \frac{\partial \psi}{\partial v^1}  \frac{\partial
+\psi}{\partial v^2} \right)$$</span></p>
+<h3 id="证明目标">证明目标</h3>
+<ul>
+<li>构造复合映射 <span
+class="math inline"><em>ψ</em>(<em>v</em>) = <em>φ</em>(<em>u</em>(<em>v</em>))</span>
+在向量空间中<strong>链式法则的矩阵形式</strong></li>
+<li>带入基本形式<span
+class="math inline"><em>I</em>, <em>I</em><sup>′</sup></span> ###
+构造参数变换的雅可比矩阵 从映射链开始： <span
+class="math display"><em>ψ</em>(<em>v</em>) = <em>ϕ</em>(<em>u</em>(<em>v</em>))</span></li>
+</ul>
+<p>链式法则矩阵形式： <span class="math display">$$
+\frac{\partial \psi}{\partial v} = \frac{\partial
+\varphi(u(v))}{\partial v} =\frac{\partial \varphi}{\partial u}
+\frac{\partial u}{\partial v} = \frac{\partial \varphi}{\partial u}
+\cdot J
+$$</span></p>
+<p>第一基本形式矩阵 <span
+class="math inline"><em>G</em>(<em>v</em>)</span>： <span
+class="math display">$$
+G(v) = \left( \frac{\partial \psi}{\partial v} \right)^\top \left(
+\frac{\partial \psi}{\partial v} \right) = \left( \frac{\partial
+\varphi}{\partial u} \cdot J\right)^{\top}\left( \frac{\partial
+\varphi}{\partial u} \cdot J\right)
+$$</span> <span class="math display">$$
+= J^\top \cdot \left(\frac{\partial \varphi}{\partial
+u}\right)^{\top}\left( \frac{\partial \varphi}{\partial u}\right) \cdot
+J = J^\top \cdot G(u) \cdot J
+$$</span> &gt; <span
+class="math inline">(<em>A</em><em>B</em>)<sup>⊤</sup> = <em>B</em><sup>⊤</sup><em>A</em><sup>⊤</sup></span></p>
+<p>得到等式: <span
+class="math display"><em>G</em>(<em>v</em>) = <em>J</em><sup>⊤</sup> ⋅ <em>G</em>(<em>u</em>) ⋅ <em>J</em></span>
+代入： <span
+class="math display"><em>I</em><sup>′</sup> = <em>d</em><em>v</em><sup>⊤</sup> ⋅ <em>G</em><sup>′</sup>(<em>v</em>) ⋅ <em>d</em><em>v</em></span>
+得到： <span
+class="math display"><em>I</em><sup>′</sup> = <em>d</em><em>v</em><sup>⊤</sup> ⋅ <em>J</em><sup>⊤</sup> ⋅ <em>G</em>(<em>v</em>) ⋅ <em>J</em> ⋅ <em>d</em><em>v</em> = (<em>J</em> ⋅ <em>d</em><em>v</em>)<sup>⊤</sup><em>G</em>(<em>u</em>)(<em>J</em> ⋅ <em>d</em><em>v</em>)</span>
+## 第一基本形式的正定性</p>
+<blockquote>
+<p>第一基本形式是正定的。</p>
+</blockquote>
+<p><strong>使用代数方法证明</strong> 只需要将各个分量带入<span
+class="math inline"><em>G</em></span>矩阵中就能得到正定性质</p>
+<p>设曲面参数化为 <span
+class="math inline"><em>φ</em>(<em>u</em><sup>1</sup>, <em>u</em><sup>2</sup>)</span>，第一基本形式为：
+<span
+class="math display"><em>d</em><em>s</em><sup>2</sup> = <em>E</em>(<em>d</em><em>u</em><sup>1</sup>)<sup>2</sup> + 2<em>F</em>, <em>d</em><em>u</em><sup>1</sup><em>d</em><em>u</em><sup>2</sup> + <em>G</em>(<em>d</em><em>u</em><sup>2</sup>)<sup>2</sup></span>
+其中： - <span
+class="math inline"><em>E</em> = ⟨<em>φ</em><sub><em>u</em><sup>1</sup></sub>, <em>φ</em><sub><em>u</em><sup>1</sup></sub>⟩</span>
+- <span
+class="math inline"><em>F</em> = ⟨<em>φ</em><sub><em>u</em><sup>1</sup></sub>, <em>φ</em><sub><em>u</em><sup>2</sup></sub>⟩</span>
+- <span
+class="math inline"><em>G</em> = ⟨<em>φ</em><sub><em>u</em><sup>2</sup></sub>, <em>φ</em><sub><em>u</em><sup>2</sup></sub>⟩</span>
+写成矩阵形式为： <span class="math display">$$
+G = \begin{bmatrix} E &amp; F \\ F &amp; G \end{bmatrix}
+$$</span>
+需要证明该矩阵是<strong>对称正定的</strong>，即对于任意非零向量 <span
+class="math inline"><em>δ</em><em>u</em> = (<em>δ</em><em>u</em><sup>1</sup>, <em>δ</em><em>u</em><sup>2</sup>)<sup>⊤</sup> ≠ 0</span>，有：
+<span
+class="math display"><em>δ</em><em>u</em><sup>⊤</sup><em>G</em><em>δ</em><em>u</em> &gt; 0</span>
+根据线性代数中 <span class="math inline">2 × 2</span>
+对称矩阵正定性的判别法，<span class="math inline"><em>G</em></span>
+正定当且仅当满足： 1. <span class="math inline"><em>E</em> &gt; 0</span>
+2. <span
+class="math inline">det (<em>G</em>) = <em>E</em><em>G</em> − <em>F</em><sup>2</sup> &gt; 0</span>
+由于<span class="math inline"><em>φ</em></span>是正则参数化，有 <span
+class="math inline"><em>φ</em><sub><em>u</em><sup><em>i</em></sup></sub> ≠ 0</span>，<span
+class="math inline"><em>φ</em><sub><em>u</em><sup>1</sup></sub>, <em>φ</em><sub><em>u</em><sup>2</sup></sub></span>
+线性无关： - 所以 <span
+class="math inline"><em>E</em> = ⟨<em>φ</em><sub><em>u</em><sup>1</sup></sub>, <em>φ</em><sub><em>u</em><sup>1</sup></sub>⟩ &gt; 0</span>
+- 其次，<span
+class="math inline"><em>E</em><em>G</em> − <em>F</em><sup>2</sup></span>
+是 <span
+class="math inline"><em>φ</em><sub><em>u</em><sup>1</sup></sub>, <em>φ</em><sub><em>u</em><sup>2</sup></sub></span>
+构成的 <span
+class="math inline"><em>G</em><em>r</em><em>a</em><em>m</em></span>
+行列式，在线性无关时必有 <span
+class="math inline"><em>E</em><em>G</em> − <em>F</em><sup>2</sup> &gt; 0</span>
+因此矩阵 <span class="math inline"><em>G</em></span> 为正定。 结论：
+  <span class="math display">$$\boxed{G = \begin{bmatrix} E &amp; F \\ F
+&amp; G \end{bmatrix} \text{ 是正定矩阵}}$$</span> ## 第一基本形式</p>
+<h2 id="定义">1. 定义</h2>
+<p>第一基本形式的系数为： <span
+class="math display"><em>E</em> = <strong>r</strong><sub><em>u</em></sub> ⋅ <strong>r</strong><sub><em>u</em></sub>,  <em>F</em> = <strong>r</strong><sub><em>u</em></sub> ⋅ <strong>r</strong><sub><em>v</em></sub>,  <em>G</em> = <strong>r</strong><sub><em>v</em></sub> ⋅ <strong>r</strong><sub><em>v</em></sub>.</span></p>
+<h2 id="矩阵表达">2. 矩阵表达</h2>
+<p>第一基本形式的矩阵为： <span class="math display">$$
+I = \begin{pmatrix}
+E &amp; F \\
+F &amp; G
+\end{pmatrix}.
+$$</span></p>
+<h2 id="张量表达">3. 张量表达</h2>
+<p>第一基本形式的张量形式为： <span
+class="math display"><em>d</em><em>s</em><sup>2</sup> = <em>g</em><sub><em>i</em><em>j</em></sub><em>d</em><em>x</em><sup><em>i</em></sup><em>d</em><em>x</em><sup><em>j</em></sup>,</span>
+其中： <span
+class="math display"><em>g</em><sub>11</sub> = <em>E</em>,  <em>g</em><sub>12</sub> = <em>g</em><sub>21</sub> = <em>F</em>,  <em>g</em><sub>22</sub> = <em>G</em>.</span></p>
+<h2 id="几何意义">4. 几何意义</h2>
+<ul>
+<li>定义内积：<span
+class="math inline">⟨<strong>v</strong>, <strong>w</strong>⟩ = <em>g</em><sub><em>i</em><em>j</em></sub><em>v</em><sup><em>i</em></sup><em>w</em><sup><em>j</em></sup></span>。</li>
+<li>计算弧长：<span
+class="math inline"><em>d</em><em>s</em><sup>2</sup> = <em>g</em><sub><em>i</em><em>j</em></sub><em>d</em><em>x</em><sup><em>i</em></sup><em>d</em><em>x</em><sup><em>j</em></sup></span>。</li>
+<li>计算面积：<span class="math inline">$dA = \sqrt{EG - F^2} \, du \,
+dv$</span>。</li>
+</ul>
+<h2 id="总结">5. 总结</h2>
+<ul>
+<li>第一基本形式描述了曲面的内蕴几何。</li>
+<li>矩阵表达：<span class="math inline">$I = \begin{pmatrix} E &amp; F
+\\ F &amp; G \end{pmatrix}$</span>。</li>
+<li>张量表达：<span
+class="math inline"><em>d</em><em>s</em><sup>2</sup> = <em>g</em><sub><em>i</em><em>j</em></sub><em>d</em><em>x</em><sup><em>i</em></sup><em>d</em><em>x</em><sup><em>j</em></sup></span>。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/peish_blog/categories/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="category-chain-item">微分几何</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/peish_blog/tags/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="print-no-link">#微分几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>微分几何3.第一基本形式</div>
+      <div>https://rapierpeish.github.io/2025/08/30/第一基本形式/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Peish.L</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 30, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/30/%E7%A9%BA%E9%97%B4%E6%9B%B2%E7%BA%BF%E8%AE%B2%E4%B9%89/" title="微分几何1.空间曲线">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">微分几何1.空间曲线</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/30/%E7%AC%AC%E4%BA%8C%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/" title="微分几何4.第二基本形式">
+                        <span class="hidden-mobile">微分几何4.第二基本形式</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/peish_blog/js/events.js" ></script>
+<script  src="/peish_blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/peish_blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/peish_blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/peish_blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
