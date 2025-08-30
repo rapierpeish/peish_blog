@@ -27,7 +27,7 @@
 <meta property="og:description" content="代数理论 Tuttle 算法是个保拓扑的嵌入映射。 从代数角度来看，离散网格上有这些度量空间： - 曲面内积度量（第一基本形式，连续的） - 连通性度量（离散的，由顶点邻接关系定义的拓扑结构） 微分几何中的嵌入映射强调光滑性和度量保留。 而 Tutte 算法所关注的则是图的拓扑结构：嵌入过程中保留邻接关系，避免边交叉，但曲面原有的内积度量会丢失。  高斯已经严格证明过：曲面高斯曲">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-08-30T08:32:39.556Z">
-<meta property="article:modified_time" content="2025-08-30T08:45:30.536Z">
+<meta property="article:modified_time" content="2025-08-30T08:49:38.025Z">
 <meta property="article:author" content="Peish.L">
 <meta property="article:tag" content="几何算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
         
         
         
-          14 mins
+          13 mins
         
       </span>
     
@@ -321,21 +321,21 @@ $$</span></p>
 class="math inline">[<em>v</em>, <em>u</em><sub><em>i</em></sub>]</span>
 不会相交（这里考虑无定向情况）。</p>
 <p>Tutte映射就是在满足以上两个机制下，将三维网格映射为二维网格，最常见的用途就是计算uv坐标。当然，Tutte映射通常用来计算映射初始值，需要根据不同需求，再加入其它类型的极值优化，可以大致分为4类：
-1. <strong>拓扑嵌入类</strong>（保邻接关系，不考虑度量） - 代表：Tutte
+- <strong>拓扑嵌入类</strong>（保邻接关系，不考虑度量） - 代表：Tutte
 embedding、Planar straight-line embedding -
 代数机制：解线性方程组（凸组合）。 - 群视角：邻接图的
-<strong>自同构群</strong> 作用下，嵌入是群不变量。 2.
+<strong>自同构群</strong> 作用下，嵌入是群不变量。 -
 <strong>能量最小化类</strong>（保拓扑，优化几何） - 代表：Spring
 embedding, Spectral embedding - 代数机制：二次型最小化（特征值问题）。 -
 群视角：等价于在 <strong>正交群 <span
 class="math inline"><em>O</em>(<em>n</em>)</span> </strong> 或
 <strong>对称群 <span
 class="math inline"><em>S</em><sub><em>n</em></sub></span> </strong>
-约束下求能量最小点。 3.
-<strong>保角映射类</strong>（保角度，部分保度量） - 代表：Harmonic map
-embedding, Conformal embedding - 代数机制：解拉普拉斯方程（调和函数）。
-- 群视角：<strong>莫比乌斯群</strong> 或 <strong>共形群</strong>
-的不变性。 4. <strong>等距嵌入类</strong>（保度量） - 代表：Isometric
+约束下求能量最小点。 - <strong>保角映射类</strong>（保角度，部分保度量）
+- 代表：Harmonic map embedding, Conformal embedding -
+代数机制：解拉普拉斯方程（调和函数）。 -
+群视角：<strong>莫比乌斯群</strong> 或 <strong>共形群</strong>
+的不变性。 - <strong>等距嵌入类</strong>（保度量） - 代表：Isometric
 embedding, Nash embedding theorem - 代数机制：解非线性 PDE。 -
 群视角：保持 <strong>全等群 (isometry group)</strong> 的嵌入。</p>
 <h1 id="算法表述">算法表述</h1>
