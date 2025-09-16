@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/peish_blog/img/fluid.png">
+  <link rel="icon" href="/peish_blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Peish.L">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="定义 设 M 是一个光滑流形，定义联络映射∇为： ∇ : 𝔛(M) × 𝔛(M) → 𝔛(M) 联络∇必须满足以下三条性质： 1. ℝ双线性： ∇aX + bYZ &#x3D; a∇XZ + b∇YZ,  ∀a, b ∈ ℝ 2. 第一个变量线性: ∇fXY &#x3D; f∇XY 3. 第二个变量满足莱布尼茨法则： ∇X(fY) &#x3D; XfY + f∇XY 其中 : - X 和 Y 是向量场，∇XY">
+<meta property="og:type" content="article">
+<meta property="og:title" content="联络">
+<meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E8%81%94%E7%BB%9C/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="定义 设 M 是一个光滑流形，定义联络映射∇为： ∇ : 𝔛(M) × 𝔛(M) → 𝔛(M) 联络∇必须满足以下三条性质： 1. ℝ双线性： ∇aX + bYZ &#x3D; a∇XZ + b∇YZ,  ∀a, b ∈ ℝ 2. 第一个变量线性: ∇fXY &#x3D; f∇XY 3. 第二个变量满足莱布尼茨法则： ∇X(fY) &#x3D; XfY + f∇XY 其中 : - X 和 Y 是向量场，∇XY">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-30T15:23:06.926Z">
+<meta property="article:modified_time" content="2025-08-31T02:01:33.033Z">
+<meta property="article:author" content="Peish.L">
+<meta property="article:tag" content="微分几何">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>联络 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/peish_blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/peish_blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/peish_blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rapierpeish.github.io","root":"/peish_blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/peish_blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/peish_blog/js/utils.js" ></script>
+  <script  src="/peish_blog/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/peish_blog/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/peish_blog/img/background_1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="联络"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-08-30 23:23" pubdate>
+          August 30, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">联络</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="定义">定义</h1>
+<p>设 <span class="math inline"><em>M</em></span>
+是一个光滑流形，定义联络映射<span class="math inline">∇</span>为： <span
+class="math display">∇ : 𝔛(<em>M</em>) × 𝔛(<em>M</em>) → 𝔛(<em>M</em>)</span></p>
+<p>联络<span class="math inline">∇</span>必须满足以下三条性质： 1. <span
+class="math inline">ℝ</span>双线性： <span
+class="math display">∇<sub><em>a</em><em>X</em> + <em>b</em><em>Y</em></sub><em>Z</em> = <em>a</em>∇<sub><em>X</em></sub><em>Z</em> + <em>b</em>∇<sub><em>Y</em></sub><em>Z</em>,  ∀<em>a</em>, <em>b</em> ∈ ℝ</span>
+2. 第一个变量线性: <span
+class="math display">∇<sub><em>f</em><em>X</em></sub><em>Y</em> = <em>f</em>∇<sub><em>X</em></sub><em>Y</em></span>
+3. 第二个变量满足莱布尼茨法则： <span
+class="math display">∇<sub><em>X</em></sub>(<em>f</em><em>Y</em>) = <em>X</em><em>f</em><em>Y</em> + <em>f</em>∇<sub><em>X</em></sub><em>Y</em></span></p>
+<p>其中 : - <span class="math inline"><em>X</em></span> 和 <span
+class="math inline"><em>Y</em></span> 是向量场，<span
+class="math inline">∇<sub><em>X</em></sub><em>Y</em></span> 是 <span
+class="math inline"><em>Y</em></span> 沿 <span
+class="math inline"><em>X</em></span> 方向的[[协变导数]]（covariant
+derivative） - <span class="math inline"><em>X</em><em>f</em></span>
+的意思就是 <strong>向量场 <span class="math inline"><em>X</em></span>
+对函数 <span class="math inline"><em>f</em></span>
+的作用</strong>，也就是<strong><span
+class="math inline"><em>f</em></span> 沿着 <span
+class="math inline"><em>X</em></span> 方向的方向导数</strong> - <span
+class="math inline"><em>f</em><em>X</em></span> 就是把向量场 <span
+class="math inline"><em>X</em></span> 乘上函数 <span
+class="math inline"><em>f</em></span>： <span
+class="math display">(<em>f</em><em>X</em>)(<em>p</em>) := <em>f</em>(<em>p</em>)<em>X</em>(<em>p</em>)</span></p>
+<p><strong>联络 (connection)</strong>：<span
+class="math inline">∇</span>
+是一个对象：它告诉你如何在流形上定义“沿方向的导数”</p>
+<blockquote>
+<p>联络在抽象层是一个双线性映射，利用[[双线性映射]]在抽象层定义了联络，[[协变导数]]是联络的代数实现。
+在光滑流形 M 上，对所有点沿着某个方向 <span
+class="math inline"><em>x</em></span> 做微小移动，这个方向就是一个向量场
+<span class="math inline"><em>X</em></span>。向量场 <span
+class="math inline"><em>Y</em></span> 是向量场 <span
+class="math inline"><em>X</em></span>
+在这些方向上的变化，这正是联络的核心作用。</p>
+</blockquote>
+<h1 id="光滑1-形式">光滑1-形式</h1>
+<p>设 <span class="math inline"><em>M</em></span> 是光滑流形，<span
+class="math inline"><em>T</em><sub><em>p</em></sub><em>M</em></span>
+是点 <span class="math inline"><em>p</em></span> 的切空间。 1-形式<span
+class="math inline"><em>α</em></span>是从从<span
+class="math inline"><em>T</em><sub><em>p</em></sub><em>M</em></span>切向量到实数的映射：
+<span
+class="math display"><em>α</em><sub><em>p</em></sub> : <em>T</em><sub><em>p</em></sub><em>M</em> → <em>R</em>  <strong>x</strong> ↦ <em>α</em><sub><em>p</em></sub>(<em>x</em>),  <strong>x</strong> ∈ <em>T</em><sub><em>p</em></sub><em>M</em></span></p>
+<p>推论1：协变导数是光滑1-形式。</p>
+<h1 id="联络-1-形式-connection-1-forms">联络 1-形式 (Connection
+1-forms)</h1>
+<p>联络 1-形式定义为： <span
+class="math display"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup> = ⟨∇<sub><em>X</em></sub><em>e</em><sub><em>j</em></sub>, <em>e</em><sub><em>j</em></sub>⟩</span>
+- <strong>联络 <span
+class="math inline">∇</span></strong>：一个几何结构，定义了如何做“导数”，是抽象的、全局的。
+- <strong>联络 1-形式 <span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup></span></strong>：在某组标架下，把联络具体化为一组矩阵值的
+1-形式</p>
+<p>在带有正交标架 <span
+class="math inline">{<em>e</em><sub>1</sub>, …, <em>e</em><sub><em>n</em></sub>}</span>
+的切空间中，定义 <strong>联络</strong> <span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup></span>
+为： <span
+class="math display">∇<em>e</em><sub><em>j</em></sub> = ∑<sub><em>i</em></sub><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup> <em>e</em><sub><em>i</em></sub></span>
+- 其中 <span class="math inline">∇<em>e</em><sub><em>j</em></sub></span>
+是向量场 <span
+class="math inline"><em>e</em><sub><em>j</em></sub></span>
+的[[协变导数]]（沿任意方向的导数）。<br />
+- 当点 <span class="math inline"><em>p</em></span>
+微小位移时，切向量的变化是沿着切平面进行的，表明切平面标架 <span
+class="math inline">{<em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>}</span>发生了变化。这种变化是<strong>无挠的</strong>，即切面标架只会在切平面内发生变化，而不沿法线方向旋转。实际上捕捉的是
+<strong>基向量的变化率</strong>，联络 1-形式是描述平面标架 <span
+class="math inline">{<em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>}</span>如何随着曲面上的点的位移而变化的工具。</p>
+<h2
+id="联络1-形式和曲面的自然标架运动gauss公式切向量场的导数分解-guass公式-关系">联络1-形式和[[曲面的自然标架运动#Gauss公式（切向量场的导数分解）|
+Guass公式]] 关系</h2>
+<p>高斯公式： <span
+class="math display">∇<sub><em>r</em><sub><em>u</em></sub></sub><em>r</em><sub><em>v</em></sub> = <em>Γ</em><sub>12</sub><sup>1</sup><em>r</em><sub><em>u</em></sub> + <em>Γ</em><sub>12</sub><sup>2</sup><em>r</em><sub><em>v</em></sub> + <em>M</em></span></p>
+<h2 id="omegai_j的几何意义"><span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup></span>的几何意义</h2>
+<h3 id="标架旋转率">标架旋转率</h3>
+<ul>
+<li><span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup>(<em>X</em>)</span>
+表示标架 <span
+class="math inline"><em>e</em><sub><em>j</em></sub></span> 沿方向 <span
+class="math inline"><em>X</em></span> 的变化投影在 <span
+class="math inline"><em>e</em><sub><em>i</em></sub></span>
+上的量。<br />
+</li>
+<li>例如二维曲面，<span
+class="math inline"><em>e</em><sub>1</sub>, <em>e</em><sub>2</sub></span>
+正交单位切向量： <span
+class="math display"><em>ω</em><sub>12</sub>(<em>X</em>) = −<em>ω</em><sub>21</sub>(<em>X</em>)</span>
+就是 <span class="math inline"><em>e</em><sub>1</sub></span> 沿 <span
+class="math inline"><em>X</em></span> 方向绕 <span
+class="math inline"><em>n</em></span> 旋转的瞬时速率。</li>
+</ul>
+<h3 id="协变导数的局部实现">协变导数的局部实现</h3>
+<h1 id="对偶1-形式-thetai">对偶1-形式 <span
+class="math inline"><em>θ</em><sup><em>i</em></sup></span></h1>
+<p>对偶1-形式是映射，作用在切向量上，输出一个实数： <span
+class="math display"><em>θ</em><sup><em>i</em></sup> : <em>T</em><sub><em>p</em></sub><em>M</em> → ℝ  <strong>x</strong> ↦ <em>θ</em><sup><em>i</em></sup>(<strong>x</strong>),  <strong>x</strong> ∈ <em>T</em><sub><em>p</em></sub><em>M</em></span>
+## 克罗内克符号<span
+class="math inline"><em>δ</em><sub><em>j</em></sub><sup><em>i</em></sup></span>
+定义<span
+class="math inline"><em>δ</em><sub><em>j</em></sub><sup><em>i</em></sup></span>：
+<span class="math display">$$
+delta^i_j = \begin{cases} 1 &amp; i = j \\ 0 &amp; i \neq j \end{cases}
+$$</span> - <strong>作用</strong>：表示单位分量，起“对角标识”作用</p>
+<p>公式意义 <span
+class="math inline"><em>θ</em><sup><em>i</em></sup>(<em>e</em><sub><em>j</em></sub>) = <em>δ</em><sub><em>j</em></sub><sup><em>i</em></sup></span>：<span
+class="math inline"><em>θ</em><sup><em>i</em></sup>(<em>e</em><sub><em>j</em></sub>)</span>
+提取出向量<span
+class="math inline"><em>e</em><sub><em>j</em></sub></span>在切向量分量<span
+class="math inline"><em>e</em><sub><em>i</em></sub></span>上的成分标量：
+<span class="math display">$$
+\theta^i(e_j)= \begin{cases} 1 &amp; i = j \\ 0 &amp; i \neq j
+\end{cases}
+$$</span> ## 小例子</p>
+<p>设二维曲面上局部切标架 <span
+class="math inline"><em>e</em><sub>1</sub>, <em>e</em><sub>2</sub>​</span>，任意向量：
+<span
+class="math display"><em>X</em> = 3<em>e</em><sub>1</sub> + 5<em>e</em><sub>2</sub></span></p>
+<p>对偶 1-形式： <span
+class="math display"><em>θ</em><sup>1</sup>(<em>X</em>) = 3  <em>θ</em><sup>2</sup>(<em>X</em>) = 5</span></p>
+<p>设 <span
+class="math inline">{<em>e</em><sub>1</sub>, …, <em>e</em><sub><em>n</em></sub>}</span>
+是流形 <span class="math inline"><em>M</em></span> 上的局部切标架，对偶
+1-形式 <span
+class="math inline">{<em>θ</em><sup>1</sup>, …, <em>θ</em><sup><em>n</em></sup>}</span>
+定义为： <span
+class="math display"><em>θ</em><sup><em>i</em></sup>(<em>e</em><sub><em>j</em></sub>) = <em>δ</em><sub><em>j</em></sub><sup><em>i</em></sup></span></p>
+<ul>
+<li><span class="math inline"><em>θ</em><sup><em>i</em></sup></span> 是
+1-形式（作用在向量上得到标量）<br />
+</li>
+<li>每个 <span
+class="math inline"><em>θ</em><sup><em>i</em></sup></span> 与一个切标架
+<span class="math inline"><em>e</em><sub><em>i</em></sub></span>
+对应</li>
+</ul>
+<blockquote>
+<p>几何意义：把向量“拆解”到标架方向上的分量，就像坐标投影尺。</p>
+</blockquote>
+<p>对任意向量场 <span
+class="math inline"><em>Y</em> = ∑<sub><em>j</em></sub><em>Y</em><sup><em>j</em></sup><em>e</em><sub><em>j</em></sub></span>：
+<span
+class="math display">∇<sub><em>X</em></sub><em>Y</em> = ∑<sub><em>j</em></sub><em>X</em>(<em>Y</em><sup><em>j</em></sup>)<em>e</em><sub><em>j</em></sub> + ∑<sub><em>i</em>, <em>j</em></sub><em>Y</em><sup><em>j</em></sup><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup>(<em>X</em>)<em>e</em><sub><em>i</em></sub></span>
+- 第一项：标量变化<br />
+- 第二项：标架旋转贡献，由 <span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup></span>
+给出</p>
+<h1 id="levi-civita-定理">Levi-Civita 定理</h1>
+<h2 id="黎曼流形">黎曼流形</h2>
+<p>一个<strong>黎曼流形</strong>是一个二元组 <span
+class="math inline">(<em>M</em>, <em>g</em>)</span>，其中:</p>
+<ul>
+<li><span class="math inline"><em>M</em></span> 是光滑流形</li>
+<li><span class="math inline"><em>g</em></span> 是<span
+class="math inline"><em>M</em></span>上内积的度量，是个对称正定映射。</li>
+</ul>
+<blockquote>
+<p>一般光滑曲面都是里面流形。</p>
+</blockquote>
+<h2 id="定理">定理</h2>
+<p>对任意黎曼流形 <span
+class="math inline">(<em>M</em>, <em>g</em>)</span> ，存在唯一一个联络
+<span class="math inline">∇</span>
+同时满足无挠性和度量相容性。这就是<strong>Levi-Civita
+联络</strong>。</p>
+<ul>
+<li>无挠性：<span
+class="math inline">∇<sub><em>X</em></sub><em>Y</em> − ∇<sub><em>Y</em></sub><em>X</em> = [<em>X</em>, <em>Y</em>]</span></li>
+<li>度量相容性: <span
+class="math inline">∇<sub><em>g</em></sub> = 0 ⇒ <em>X</em>(<em>g</em>(<em>Y</em>, <em>Z</em>)) = <em>g</em>(∇<sub><em>X</em></sub><em>T</em>, <em>Z</em>) + <em>g</em>(<em>T</em>, ∇<sub><em>X</em></sub>, <em>Z</em>)</span></li>
+</ul>
+<h1 id="计算">计算</h1>
+<h2 id="方法-1通过协变导数展开">方法 1：通过协变导数展开</h2>
+<ol type="1">
+<li>给定切标架 <span
+class="math inline">{<em>e</em><sub><em>i</em></sub>}</span><br />
+</li>
+<li>对每个标架 <span
+class="math inline"><em>e</em><sub><em>j</em></sub></span>，计算其沿方向
+<span class="math inline"><em>X</em></span> 的协变导数： <span
+class="math display">∇<sub><em>X</em></sub><em>e</em><sub><em>j</em></sub></span></li>
+<li>将 <span
+class="math inline">∇<sub><em>X</em></sub><em>e</em><sub><em>j</em></sub></span>
+在标架 <span
+class="math inline">{<em>e</em><sub><em>i</em></sub>}</span> 上展开：
+<span
+class="math display">∇<sub><em>X</em></sub><em>e</em><sub><em>j</em></sub> = ∑<sub><em>i</em></sub><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup>(<em>X</em>)<em>e</em><sub><em>i</em></sub></span></li>
+<li>得到 <span
+class="math inline"><em>ω</em><sub><em>j</em></sub><sup><em>i</em></sup>(<em>X</em>)</span>
+即联络 1-形式在方向 <span class="math inline"><em>X</em></span>
+的值。</li>
+</ol>
+<h1 id="例1计算双曲面的联络">例1：计算双曲面的联络</h1>
+<p>两叶型双曲面的上半叶参数化： <span
+class="math display"><em>r</em>(<em>u</em>, <em>v</em>) = (sinh <em>u</em>cos <em>v</em>, sinh <em>u</em>sin <em>v</em>, cosh <em>u</em>),   <em>u</em> &gt; 0, <em>v</em> ∈ (0, 2<em>π</em>).</span>
+- 关于 <span class="math inline"><em>u</em>, <em>v</em></span> 的偏导数
+<span
+class="math display"><em>r</em><sub><em>u</em></sub> = (cosh <em>u</em>cos <em>v</em>, cosh <em>u</em>sin <em>v</em>, sinh <em>u</em>),  <em>r</em><sub><em>v</em></sub> = (−sinh <em>u</em>sin <em>v</em>, sinh <em>u</em>cos <em>v</em>, 0).</span></p>
+<p>第一基本形式 <span
+class="math display"><em>E</em> = ⟨<em>r</em><sub><em>u</em></sub>, <em>r</em><sub><em>u</em></sub>⟩ = cosh<sup>2</sup><em>u</em> + sinh<sup>2</sup><em>u</em> = cosh 2<em>u</em>,  <em>F</em> = ⟨<em>r</em><sub><em>u</em></sub>, <em>r</em><sub><em>v</em></sub>⟩ = 0,  <em>G</em> = ⟨<em>r</em><sub><em>v</em></sub>, <em>r</em><sub><em>v</em></sub>⟩ = sinh<sup>2</sup><em>u</em>.</span></p>
+<p><span
+class="math display"><em>d</em><em>s</em><sup>2</sup> = <em>E</em> <em>d</em><em>u</em><sup>2</sup> + <em>G</em> <em>d</em><em>v</em><sup>2</sup> = cosh 2<em>u</em> <em>d</em><em>u</em><sup>2</sup> + sinh<sup>2</sup><em>u</em> <em>d</em><em>v</em><sup>2</sup>.</span></p>
+<p>由于 <span class="math inline"><em>F</em> = 0</span> 且 <span
+class="math inline"><em>E</em> = <em>E</em>(<em>u</em>), <em>G</em> = <em>G</em>(<em>u</em>)</span>，可用正交坐标的快捷公式：
+<span class="math display">$$
+\begin{aligned}
+&amp;\Gamma^u_{uu}=\tfrac{1}{2}E^{-1}E_u, \qquad
+\Gamma^u_{vv}=-\tfrac{1}{2}E^{-1}G_u, \qquad
+\Gamma^u_{uv}=\Gamma^u_{vu}=0,\\[4pt]
+&amp;\Gamma^v_{uv}=\Gamma^v_{vu}=\tfrac{1}{2}G^{-1}G_u,\qquad
+\Gamma^v_{vv}=\tfrac{1}{2}G^{-1}G_v=0,\qquad
+\Gamma^v_{uu}=-\tfrac{1}{2}G^{-1}E_v=0.
+\end{aligned}
+$$</span></p>
+<p>代入 <span
+class="math display"><em>E</em> = cosh 2<em>u</em>,  <em>E</em><sub><em>u</em></sub> = 2sinh 2<em>u</em>,   <em>G</em> = sinh<sup>2</sup><em>u</em>,  <em>G</em><sub><em>u</em></sub> = 2sinh <em>u</em>cosh <em>u</em></span></p>
+<p>计算Christoffel符号：</p>
+<p>得非零项 <span class="math display">$$
+\boxed{
+\Gamma^u_{uu}=\tanh 2u,\quad
+\Gamma^u_{vv}=-\,\frac{\sinh u\cosh u}{\cosh 2u},\quad
+\Gamma^v_{uv}=\Gamma^v_{vu}=\coth u
+}
+$$</span></p>
+<p>于是协变导数（坐标基）为 <span class="math display">$$
+\begin{aligned}
+\nabla_{\partial_u}\partial_u&amp;=\tanh 2u\,\partial_u,\\
+\nabla_{\partial_u}\partial_v&amp;=\nabla_{\partial_v}\partial_u=\coth
+u\,\partial_v,\\
+\nabla_{\partial_v}\partial_v&amp;=-\frac{\sinh u\cosh u}{\cosh
+2u}\,\partial_u.
+\end{aligned}
+$$</span></p>
+<p>取单位正交切标架 <span class="math display">$$
+e_1=\frac{1}{\sqrt{E}}\partial_u=\frac{1}{\sqrt{\cosh
+2u}}\partial_u,\qquad
+e_2=\frac{1}{\sqrt{G}}\partial_v=\frac{1}{\sinh u}\partial_v,
+$$</span> 对应正交对偶 1-形式 <span class="math display">$$
+\theta^1=\sqrt{E}\,du=\sqrt{\cosh 2u}\,du,\qquad
+\theta^2=\sqrt{G}\,dv=\sinh u\,dv,
+$$</span> 使得 <span
+class="math display"><em>d</em><em>s</em><sup>2</sup> = (<em>θ</em><sup>1</sup>)<sup>2</sup> + (<em>θ</em><sup>2</sup>)<sup>2</sup>.</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/peish_blog/categories/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="category-chain-item">微分几何</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/peish_blog/tags/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="print-no-link">#微分几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>联络</div>
+      <div>https://rapierpeish.github.io/2025/08/30/联络/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Peish.L</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 30, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/31/%E6%9B%B2%E9%9D%A2%E7%9A%84%E8%87%AA%E7%84%B6%E6%A0%87%E6%9E%B6%E8%BF%90%E5%8A%A8/" title="曲面的自然标架运动">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">曲面的自然标架运动</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/08/30/%E4%BB%8ESobolev%E5%BA%A6%E9%87%8F%E5%87%BA%E5%8F%91%E5%BB%BA%E7%AB%8B%E5%8F%98%E5%88%86/" title="从Sobolev度量出发建立变分">
+                        <span class="hidden-mobile">从Sobolev度量出发建立变分</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/peish_blog/js/events.js" ></script>
+<script  src="/peish_blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/peish_blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/peish_blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/peish_blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -19,22 +19,23 @@
   <meta name="author" content="Peish.L">
   <meta name="keywords" content="">
   
-    <meta name="description" content="几何理论 三次多项式拟合计算曲率 原论文使用隐函数方法计算曲面曲率，此处我为了贴合[[曲面曲率]]讲义，使用参数化方式计算曲面顶点的极大和极小曲率。 基本计算原理：使用三阶多项式 z(u, v) 在局部标架下，对顶点 v 的2阶领域拟合,计算出 z 的Hessian矩阵(二阶导数)，其特征值和特征向量即为顶点的曲率极值 kmax, kmin 和曲率方向。 在局部坐标系 (u, v)">
+    <meta name="description" content="本文从函数空间的角度出发，构造变分法的理论基础，逐步推导欧拉–拉格朗日方程。我们以路径最短问题为例，在具有度量结构的 Sobolev 空间上分析泛函的极值问题。 泛函与变分的基本概念 泛函的说明 泛函（functional）是个映射，满足： L : ℱ → ℝ 泛函将任意 γ ∈ ℱ 作为输入，输出一个实数，ℱ是一个函数集合。 ### 例子：路径弧长 设路径函数 γ(t) : [0, 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="山脊线提取算法">
-<meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E5%B1%B1%E8%84%8A%E7%BA%BF%E6%8F%90%E5%8F%96%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="从Sobolev度量出发建立变分">
+<meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E4%BB%8ESobolev%E5%BA%A6%E9%87%8F%E5%87%BA%E5%8F%91%E5%BB%BA%E7%AB%8B%E5%8F%98%E5%88%86/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="几何理论 三次多项式拟合计算曲率 原论文使用隐函数方法计算曲面曲率，此处我为了贴合[[曲面曲率]]讲义，使用参数化方式计算曲面顶点的极大和极小曲率。 基本计算原理：使用三阶多项式 z(u, v) 在局部标架下，对顶点 v 的2阶领域拟合,计算出 z 的Hessian矩阵(二阶导数)，其特征值和特征向量即为顶点的曲率极值 kmax, kmin 和曲率方向。 在局部坐标系 (u, v)">
+<meta property="og:description" content="本文从函数空间的角度出发，构造变分法的理论基础，逐步推导欧拉–拉格朗日方程。我们以路径最短问题为例，在具有度量结构的 Sobolev 空间上分析泛函的极值问题。 泛函与变分的基本概念 泛函的说明 泛函（functional）是个映射，满足： L : ℱ → ℝ 泛函将任意 γ ∈ ℱ 作为输入，输出一个实数，ℱ是一个函数集合。 ### 例子：路径弧长 设路径函数 γ(t) : [0, 1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-08-30T12:16:08.036Z">
-<meta property="article:modified_time" content="2025-08-30T12:45:00.051Z">
+<meta property="article:published_time" content="2025-08-30T15:18:31.236Z">
+<meta property="article:modified_time" content="2025-08-30T15:18:31.236Z">
 <meta property="article:author" content="Peish.L">
-<meta property="article:tag" content="几何算法">
+<meta property="article:tag" content="微分几何">
+<meta property="article:tag" content="代数">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>山脊线提取算法 - Hexo</title>
+  <title>从Sobolev度量出发建立变分 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="山脊线提取算法"></span>
+            <span id="subtitle" data-typed-text="从Sobolev度量出发建立变分"></span>
           
         </div>
 
@@ -215,7 +216,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-30 20:16" pubdate>
+        <time datetime="2025-08-30 23:18" pubdate>
           August 30, 2025 pm
         </time>
       </span>
@@ -227,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k words
+          1k words
         
       </span>
     
@@ -275,127 +276,141 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">山脊线提取算法</h1>
+            <h1 id="seo-header">从Sobolev度量出发建立变分</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="几何理论">几何理论</h1>
-<h2 id="三次多项式拟合计算曲率">三次多项式拟合计算曲率</h2>
-<p>原论文使用隐函数方法计算曲面曲率，此处我为了贴合[[曲面曲率]]讲义，使用参数化方式计算曲面顶点的极大和极小曲率。</p>
-<p>基本计算原理：使用三阶多项式 <span
-class="math inline"><em>z</em>(<em>u</em>, <em>v</em>)</span>
-在局部标架下，对顶点 <span class="math inline"><em>v</em></span>
-的2阶领域拟合,计算出 <span class="math inline"><em>z</em></span>
-的Hessian矩阵(二阶导数)，其特征值和特征向量即为顶点的曲率极值 <span
-class="math inline"><em>k</em><sub>max</sub>, <em>k</em><sub>min</sub></span>
-和曲率方向。</p>
-<p>在局部坐标系 <span
-class="math inline">(<em>u</em>, <em>v</em>)</span> 下，以点 <span
-class="math inline"><em>p</em></span> 为原点，拟合曲面高度函数： <span
+                <p>本文从函数空间的角度出发，构造变分法的理论基础，逐步推导欧拉–拉格朗日方程。我们以路径最短问题为例，在具有度量结构的
+Sobolev 空间上分析泛函的极值问题。</p>
+<h2 id="泛函与变分的基本概念">泛函与变分的基本概念</h2>
+<h3 id="泛函的说明">泛函的说明</h3>
+<p>泛函（functional）是个映射，满足： <span
+class="math display"><em>L</em> : ℱ → ℝ</span> 泛函将任意 <span
+class="math inline"><em>γ</em> ∈ ℱ</span> 作为输入，输出一个实数，<span
+class="math inline">ℱ</span>是一个函数集合。 ### 例子：路径弧长
+设路径函数 <span
+class="math inline"><em>γ</em>(<em>t</em>) : [0, 1] → ℝ<sup><em>n</em></sup></span>，则弧长泛函为：
+<span
+class="math display"><em>L</em>[<em>γ</em>] = ∫<sub>0</sub><sup>1</sup>∥<em>γ</em><sup>′</sup>(<em>t</em>)∥<em>d</em><em>t</em></span>
+### 什么是变分？
+“变分”即研究泛函在函数的微小扰动下的变化率，本质上是研究泛函在函数空间中的“方向导数”。
+要研究方向导数，必须先定义<strong>距离度量</strong>。 ## 路径函数空间与
+Sobolev 度量 设路径函数为： <span
+class="math display"><em>γ</em> : [0, 1] → ℝ<sup><em>n</em></sup></span></p>
+<p>定义路径空间为一阶<span
+class="math inline"><em>S</em><em>o</em><em>b</em><em>o</em><em>l</em><em>e</em><em>v</em></span>空间：
+<span
+class="math display"><em>H</em><sup>1</sup>([0, 1], ℝ<sup><em>n</em></sup>) = {<em>γ</em> ∈ <em>L</em><sup>2</sup> | <em>γ</em><sup>′</sup> ∈ <em>L</em><sup>2</sup>}</span>
+在该空间中定义内积： <span
+class="math display">⟨<em>γ</em><sub>1</sub>, <em>γ</em><sub>2</sub>⟩<sub><em>H</em><sup>1</sup></sub> = ∫<sub>0</sub><sup>1</sup><em>γ</em><sub>1</sub>(<em>t</em>) ⋅ <em>γ</em><sub>2</sub>(<em>t</em>) <em>d</em><em>t</em> + ∫<sub>0</sub><sup>1</sup><em>γ</em><sub>1<sup>′</sup></sub>(<em>t</em>) ⋅ <em>γ</em><sub>2<sup>′</sup></sub>(<em>t</em>) <em>d</em><em>t</em></span>
+由此诱导范数与度量： <span
+class="math display">∥<em>γ</em>∥<sub><em>H</em><sup>1</sup></sub> = (∫<sub>0</sub><sup>1</sup>∥<em>γ</em>(<em>t</em>)∥<sup>2</sup> <em>d</em><em>t</em> + ∫<sub>0</sub><sup>1</sup>∥<em>γ</em><sup>′</sup>(<em>t</em>)∥<sup>2</sup> <em>d</em><em>t</em>)<sup>1/2</sup></span>
+<span
+class="math display"><em>d</em>(<em>γ</em><sub>1</sub>, <em>γ</em><sub>2</sub>) = ∥<em>γ</em><sub>1</sub> − <em>γ</em><sub>2</sub>∥<sub><em>H</em><sup>1</sup></sub></span></p>
+<p>该度量满足： - 非负性； - 分离性（在几乎处处等价类中）； - 对称性； -
+三角不等式。 因此 <span
+class="math inline"><em>H</em><sup>1</sup></span>
+是一个完备的度量空间（希尔伯特空间）。 &gt; 空间 = 集合 + 度量</p>
+<h2
+id="解释函数的微小领域neighborhood">解释：函数的微小领域（Neighborhood）</h2>
+<p>设泛函定义在路径空间 <span
+class="math inline">ℱ = <em>H</em><sup>1</sup>([0, 1], ℝ<sup><em>n</em></sup>)</span>
+上。<br />
+给定某个路径函数 <span
+class="math inline"><em>γ</em> ∈ ℱ</span>，使用<em>epsilon-delta</em>方式描述微小领域：</p>
+<p>函数<span class="math inline"><em>γ̃</em> ∈ ℱ</span> 属于<span
+class="math inline"><em>γ</em></span>的一个微小邻域， 如果对任意 <span
+class="math inline"><em>δ</em> &gt; 0</span>，满足 <span
+class="math inline">∥<em>γ̃</em> − <em>γ</em>∥<sub><em>H</em><sup>1</sup></sub> &lt; <em>δ</em></span>
+，那么满足条件的所有<span
+class="math inline"><em>γ̃</em></span>就成为<span
+class="math inline"><em>γ</em></span>的微小领域。</p>
+<p>这个“邻域”是通过 <em>Sobolev</em>
+范数构建的，衡量路径本身和导数的差异： <span
+class="math display">∥<em>γ</em> − <em>γ̃</em>∥<sub><em>H</em><sup>1</sup></sub><sup>2</sup> = ∫<sub>0</sub><sup>1</sup>∥<em>γ</em>(<em>t</em>) − <em>γ̃</em>(<em>t</em>)∥<sup>2</sup>+∥<em>γ</em><sup>′</sup>(<em>t</em>) − <em>γ̃</em><sup>′</sup>(<em>t</em>)∥<sup>2</sup><em>d</em><em>t</em></span>
+### 局部 Lipschitz 条件 设泛函<span
+class="math inline"><em>L</em> : <em>H</em><sup>1</sup> → ℝ</span>。我们说
+<span class="math inline"><em>L</em></span> 在 <span
+class="math inline"><em>γ</em></span> 的某邻域中满足<strong>局部
+Lipschitz 条件</strong>，是指存在常数<span
+class="math inline"><em>C</em> &gt; 0</span>，使得对所有<span
+class="math inline"><em>γ̃</em></span>满足： <span
+class="math display">∥<em>γ̃</em> − <em>γ</em>∥<sub><em>H</em><sup>1</sup></sub> &lt; <em>δ</em>  ⇒  |<em>L</em>[<em>γ̃</em>] − <em>L</em>[<em>γ</em>]| ≤ <em>C</em>∥<em>γ̃</em> − <em>γ</em>∥<sub><em>H</em><sup>1</sup></sub></span>
+这个条件说明：<strong>泛函的值变化是收敛的</strong>，它是可微性的一个必要前提。</p>
+<h2 id="从-lipschitz-到-gateaux-可微">从 Lipschitz 到 Gateaux 可微</h2>
+<h3 id="泛函可微重要性">泛函可微重要性</h3>
+<p>在一般的泛函空间中，泛函未必处处可微。例如： -
+某些非光滑泛函在不可导点不可微； -
+如果泛函在扰动方向不连续，也会使变分导数不存在。 ###
+泛函可微性（<em>Gateaux</em> 可微） 设<span
+class="math inline"><em>L</em> : <em>H</em><sup>1</sup> → ℝ</span>是定义在<em>Sobolev</em>空间上的泛函。如果对任意<span
+class="math inline"><em>γ</em> ∈ <em>H</em><sup>1</sup></span>有<em>Lipschitz</em>条件成立，所有对所有方向<span
+class="math inline"><em>η</em> ∈ <em>H</em><sup>1</sup></span>，极限存在：
+<span class="math display">$$
+\lim_{\epsilon \to 0} \frac{L[\gamma + \epsilon \eta] -
+L[\gamma]}{\epsilon}
+$$</span> 我们说 <span class="math inline"><em>L</em></span> 在<span
+class="math inline"><em>γ</em></span>点沿<span
+class="math inline"><em>η</em></span>方向 <strong>Gâteaux
+可微</strong>，</p>
+<h2 id="定义变分sobolev-空间中的方向导数">定义变分：Sobolev
+空间中的方向导数</h2>
+<p>给定泛函： <span
+class="math display"><em>L</em>[<em>γ</em>] = ∫<sub>0</sub><sup>1</sup><em>F</em>(<em>γ</em>(<em>t</em>), <em>γ</em><sup>′</sup>(<em>t</em>)) <em>d</em><em>t</em></span>
+引入<strong>扰动函数</strong> <span
+class="math inline"><em>η</em> ∈ <em>H</em><sub>0</sub><sup>1</sup>([0, 1], ℝ<sup><em>n</em></sup></span>，满足端点条件
+<span class="math inline"><em>η</em>(0) = <em>η</em>(1) = 0</span>。
+构造扰动路径： <span
+class="math display"><em>γ</em><sub><em>ϵ</em></sub>(<em>t</em>) = <em>γ</em>(<em>t</em>) + <em>ϵ</em><em>η</em>(<em>t</em>)</span>
+定义变分（<span class="math inline"><em>η</em></span>方向导数）定义为：
+<span class="math display">$$
+\delta L[\gamma](\eta) := \left. \frac{d}{d\epsilon} L[\gamma_\epsilon]
+\right|_{\epsilon = 0}
+= \left. \frac{d}{d\epsilon}
+\int^{1}_{0}L(\gamma_{\epsilon},\gamma_{\epsilon}^{'},t)dt
+\right|_{\epsilon = 0}
+$$</span> 导数符号<span
+class="math inline">$\frac{d}{d\epsilon}$</span>推进到积分号内： <span
 class="math display">$$
-z(u,v) = \frac12 \left( a u^2 + 2 b u v + c v^2 \right)
-+ \frac16 \left( d u^3 + 3 e u^2 v + 3 f u v^2 + g v^3 \right)
+\delta L[\gamma](\eta) =\int^{1}_{0} (\frac{\partial L}{\partial
+\gamma_{\epsilon}}\eta + \frac{\partial L}{\partial
+\gamma_{\epsilon}^{'} } \frac{d \eta}{d \epsilon} )dt \quad \epsilon = 0
+$$</span> &gt; 这里使用的多元函数的1阶微分形式： <span
+class="math display">$$
+\frac{dF(x(t),y(t))}{dt} = \frac{\partial F}{\partial x} \frac{dx}{dt}
++\frac{\partial F}{\partial y} \frac{dy}{dt}
+$$</span> 对第二项做分部积分：</p>
+<blockquote>
+<p>部分积分公式 <span
+class="math display">∫<sub><em>a</em></sub><sup><em>b</em></sup><em>u</em><em>v</em><sup>′</sup><em>d</em><em>x</em> = [<em>u</em><em>v</em>]|<sub><em>a</em></sub><sup><em>b</em></sup> − ∫<sub><em>a</em></sub><sup><em>b</em></sup><em>u</em><sup>′</sup><em>v</em><em>d</em><em>x</em></span></p>
+</blockquote>
+<p><span class="math display">$$
+\delta L[\gamma](\eta) =
+\int^{1}_{0} \frac{\partial L}{\partial \gamma_{\epsilon}^{'} } \frac{d
+\eta}{d \epsilon} dt  =
+\int^{1}_{0} \frac{\partial F}{\partial
+\gamma_{\epsilon}}    \underbrace{\frac{\partial
+\gamma_{\epsilon}}{\partial \epsilon}}_{\eta} dt
+- \int^{1}_{0} \frac{d}{dt} (\frac{\partial F}{\partial
+\gamma_{\epsilon}^{'} })\eta dt
+$$</span> 合并化简： <span class="math display">$$
+\delta L[\gamma](\eta) = \int^{1}_{0} (\frac{\partial F}{\partial
+\gamma_{\epsilon}} - \frac{d}{dt}\frac{\partial F}{\partial
+\gamma_{\epsilon}})\eta dt
 $$</span></p>
-<ul>
-<li>二阶系数 <span
-class="math inline">(<em>a</em>, <em>b</em>, <em>c</em>)</span> 决定
-Hessian，用于计算 <span
-class="math inline"><em>k</em><sub>max</sub>, <em>k</em><sub>min</sub></span>；</li>
-<li>三阶系数 <span
-class="math inline">(<em>d</em>, <em>e</em>, <em>f</em>, <em>g</em>)</span>
-决定 Hessian 的导数场（三阶导数），用于计算曲率场变化的极值 <span
-class="math inline"><em>e</em><sub>max</sub></span>。</li>
-</ul>
-<p>使用最小二乘法解超静定方程： <span
-class="math display"><strong>z</strong> ≈ <em>A</em> ⋅ <strong>c</strong></span>
-其中 <span
-class="math inline"><strong>c</strong> = [<em>a</em>, <em>b</em>, <em>c</em>, <em>d</em>, <em>e</em>, <em>f</em>, <em>g</em>]<sup><em>T</em></sup></span>。</p>
-<blockquote>
-<p>这些计算是在局部标架下进行的 ## Ridge Line和Valley line判断</p>
-</blockquote>
-<p>在曲面上每一点 <span
-class="math inline"><em>p</em></span>，有两个主曲率 <span
-class="math inline"><em>k</em><sub>max</sub>, <em>k</em><sub>min</sub></span>，对应的主方向
-<span
-class="math inline"><strong>t</strong><sub>max</sub>, <strong>t</strong><sub>min</sub></span>，其中
-<span
-class="math inline"><em>k</em><sub>max</sub> ≥ <em>k</em><sub>min</sub></span>。</p>
-<p>Ridge line: 沿最大曲率方向 <span
-class="math inline"><strong>t</strong><sub>max</sub></span>，<span
-class="math inline"><em>k</em><sub>max</sub></span> 取得极大值的曲线
-Valley line: 沿最大曲率方向 <span
-class="math inline"><strong>t</strong><sub>max</sub></span>，<span
-class="math inline"><em>k</em><sub>max</sub></span>
-取得极小值的曲线。</p>
-<p>判定条件依赖于方向导数 <span
-class="math inline"><em>e</em><sub>max</sub></span>： <span
-class="math display"><em>e</em><sub>max</sub>(<em>p</em>) = ∇<em>k</em><sub><em>m</em><em>a</em><em>x</em></sub>(<em>p</em>) ⋅ <strong>t</strong><sub><em>m</em><em>a</em><em>x</em></sub>(<em>p</em>)</span></p>
-<ul>
-<li><span
-class="math inline">∇<em>k</em><sub><em>m</em><em>a</em><em>x</em></sub>(<em>p</em>)</span>是曲率场在<em>p</em>点在主方向的梯度</li>
-<li><span
-class="math inline"><strong>t</strong><sub><em>m</em><em>a</em><em>x</em></sub>(<em>p</em>)</span>是<em>p</em>点的主方向</li>
-</ul>
-<p>当 <span class="math inline"><em>e</em><sub>max</sub> = 0</span>
-且满足二阶条件时，点 <span class="math inline"><em>p</em></span> 在
-<em>Ridge/Valley</em> 上。</p>
-<h1 id="顶点法线估计">顶点法线估计</h1>
-<p>一般计算Mesh顶点法线的方法： - 拉普拉斯-贝尔特拉米算法 - PCA方法</p>
-<h4 id="拉普拉斯-贝尔特拉米算法">拉普拉斯-贝尔特拉米算法</h4>
-<p>拉普拉斯-贝尔特拉米算子通过邻域点的权重平均来估算顶点的法线。具体步骤如下：
-- 对每个顶点，计算其邻域中所有相邻三角形的法线。 -
-将相邻三角形的法线进行加权平均，权重通常由相邻三角形的面积或角度决定。</p>
 <p><span
-class="math display"><strong>n</strong><sub><em>v</em></sub> = ∑<sub><em>T</em> ∈ <em>N</em>(<em>v</em>)</sub><strong>n</strong><sub><em>T</em></sub> ⋅ <em>ω</em>(<em>T</em>)</span></p>
-<p>其中：</p>
-<ul>
-<li><span
-class="math inline"><strong>n</strong><sub><em>v</em></sub></span>
-是顶点 <span class="math inline"><em>v</em></span> 的法线。</li>
-<li><span class="math inline"><em>N</em>(<em>v</em>)</span> 是顶点 <span
-class="math inline"><em>v</em></span> 邻域中的所有三角形。</li>
-<li><span
-class="math inline"><strong>n</strong><sub><em>T</em></sub></span>
-是三角形 <span class="math inline"><em>T</em></span> 的法线。</li>
-<li><span class="math inline"><em>ω</em>(<em>T</em>)</span> 是三角形
-<span class="math inline"><em>T</em></span> 的权重。</li>
-</ul>
-<p><strong>优点</strong>：能够平滑地计算法线，适用于复杂网格和具有不规则拓扑的网格。
-<strong>缺点</strong>：计算量较大，尤其是在大型网格上，可能需要额外的优化。</p>
-<h4 id="pca方法">PCA方法</h4>
-<p>主成分分析（PCA）方法通过计算网格顶点邻域的协方差矩阵来确定法线方向。PCA可以通过对邻域点进行降维处理，提取出最大变化的方向作为法线。</p>
-<p><strong>优点</strong>：计算速度较快，适合大规模数据。
-<strong>缺点</strong>：局部噪声影响法线的准确性。</p>
-<h3 id="面法线的法线平滑">面法线的法线平滑</h3>
-<p>PCA方法容易受噪声影响，所以用PCA方法计算法线根据效果对法线做平滑处理。常见处理方式包括：</p>
-<ul>
-<li><strong>均值平滑</strong>：通过对邻域法线进行简单的平均来平滑法线。</li>
-<li><strong>高斯平滑</strong>：使用高斯核对法线进行平滑，减少噪声影响。</li>
-<li><strong>双边滤波</strong>：结合空间和法线信息的双边滤波，用于消除噪声同时保持表面细节。</li>
-</ul>
-<blockquote>
-<p>我在实现中使用的是拉普拉斯-贝尔特拉米，cot权重。</p>
-</blockquote>
-<h1 id="结果展示和分析">结果展示和分析</h1>
-<p>valley线追踪结果展示，红色为valley线 <img
-src="/peish_blog/images/Pasted%20image%2020250817221406.png" srcset="/peish_blog/img/loading.gif" lazyload /></p>
-<p>论文valley线和Ridge线追踪结果，红色为valley线，蓝色为Ridge线 <img
-src="/peish_blog/images/Pasted%20image%2020250830181741.png" srcset="/peish_blog/img/loading.gif" lazyload /></p>
-<h2 id="论文不足">论文不足</h2>
-<p>Valley
-line的追踪结果受网格拓扑结构影响比较大。在放大后，会发现很多零碎的，尖锐的线段。
-我觉得在算法前处理阶段，可以使用局部Loop细分+各项同性重建算法，增加大曲率部分的网格密度。在算法后处理阶段，使用VR复形工具或者聚类算法，建立Vally
-line的拓扑空间。使用高斯结构约束方程，除掉尖锐的部分，然后使用B样条曲线重新插值。</p>
-<p><img
-src="/peish_blog/images/Pasted%20image%2020250830200840.png" srcset="/peish_blog/img/loading.gif" lazyload /></p>
-<h1 id="参考论文">参考论文</h1>
-<ol type="1">
-<li>Ridge-Valley Lines on Meshes via Implicit Surface Fitting. Yutaka
-Ohtake Alexander Belyaev Hans-Peter Seidel</li>
-<li>Fast and Robust Detection of Crest Lines on Meshes. Shin Yoshizawa,
-Alexander Belyaev, Hans-Peter Seidel</li>
-</ol>
+class="math inline"><em>δ</em><em>L</em>[<em>γ</em>](<em>η</em>)</span>取极值点：
+<span class="math display">$$
+\int^{1}_{0} (\frac{\partial F}{\partial \gamma_{\epsilon}} -
+\frac{d}{dt}\frac{\partial F}{\partial \gamma_{\epsilon}})\eta dt = 0
+$$</span> 所以： <span class="math display">$$
+\frac{\partial F}{\partial \gamma_{\epsilon}} -
+\frac{d}{dt}\frac{\partial F}{\partial \gamma_{\epsilon}} = 0
+\Leftrightarrow
+\frac{\partial F}{\partial \gamma} - \frac{d}{dt}\frac{\partial
+F}{\partial \gamma} = 0
+$$</span> 这个就是<strong>欧拉-拉格朗日方程</strong></p>
 
                 
               </div>
@@ -404,32 +419,13 @@ Alexander Belyaev, Hans-Peter Seidel</li>
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/peish_blog/categories/%E5%87%A0%E4%BD%95%E7%AE%97%E6%B3%95/" class="category-chain-item">几何算法</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/peish_blog/tags/%E5%87%A0%E4%BD%95%E7%AE%97%E6%B3%95/" class="print-no-link">#几何算法</a>
+        <a href="/peish_blog/tags/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="print-no-link">#微分几何</a>
+      
+        <a href="/peish_blog/tags/%E4%BB%A3%E6%95%B0/" class="print-no-link">#代数</a>
       
     </div>
   
@@ -441,8 +437,8 @@ Alexander Belyaev, Hans-Peter Seidel</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>山脊线提取算法</div>
-      <div>https://rapierpeish.github.io/2025/08/30/山脊线提取算法/</div>
+      <div>从Sobolev度量出发建立变分</div>
+      <div>https://rapierpeish.github.io/2025/08/30/从Sobolev度量出发建立变分/</div>
     </div>
     <div class="license-meta">
       
@@ -486,9 +482,9 @@ Alexander Belyaev, Hans-Peter Seidel</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/peish_blog/2025/08/30/%E5%BC%A7%E9%95%BF%E7%9A%84%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98/" title="弧长的变分问题">
+                      <a href="/peish_blog/2025/08/30/%E8%81%94%E7%BB%9C/" title="联络">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">弧长的变分问题</span>
+                        <span class="hidden-mobile">联络</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -496,8 +492,8 @@ Alexander Belyaev, Hans-Peter Seidel</li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/peish_blog/2025/08/30/Tutte%E5%B5%8C%E5%85%A5%E7%AE%97%E6%B3%95/" title="Tutte嵌入算法">
-                        <span class="hidden-mobile">Tutte嵌入算法</span>
+                      <a href="/peish_blog/2025/08/30/%E5%BC%A7%E9%95%BF%E7%9A%84%E5%8F%98%E5%88%86%E9%97%AE%E9%A2%98/" title="弧长的变分问题">
+                        <span class="hidden-mobile">弧长的变分问题</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
