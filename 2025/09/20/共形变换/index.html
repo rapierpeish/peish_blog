@@ -1,0 +1,1001 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/peish_blog/img/fluid.png">
+  <link rel="icon" href="/peish_blog/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Peish.L">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="引言 在几何和物理中，我们常常关心一个变换是否保持图形的角度或形状特征。  等距变换（isometry）：保持长度与角度，例如旋转、平移。 相似变换（similarity）：保持角度但允许整体缩放。 共形变换（conformal）：仅要求保持角度，长度可以局部缩放。  本讲义从熟悉的旋转矩阵群出发，逐步构造出微分几何中的共形变换定义，并介绍李群视角下的理解方法。 旋转矩阵群 考虑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7.共形变换">
+<meta property="og:url" content="https://rapierpeish.github.io/2025/09/20/%E5%85%B1%E5%BD%A2%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="引言 在几何和物理中，我们常常关心一个变换是否保持图形的角度或形状特征。  等距变换（isometry）：保持长度与角度，例如旋转、平移。 相似变换（similarity）：保持角度但允许整体缩放。 共形变换（conformal）：仅要求保持角度，长度可以局部缩放。  本讲义从熟悉的旋转矩阵群出发，逐步构造出微分几何中的共形变换定义，并介绍李群视角下的理解方法。 旋转矩阵群 考虑">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-20T04:58:04.388Z">
+<meta property="article:modified_time" content="2025-09-20T04:58:04.388Z">
+<meta property="article:author" content="Peish.L">
+<meta property="article:tag" content="微分几何">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>7.共形变换 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/peish_blog/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/peish_blog/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/peish_blog/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"rapierpeish.github.io","root":"/peish_blog/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/peish_blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/peish_blog/js/utils.js" ></script>
+  <script  src="/peish_blog/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/peish_blog/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/peish_blog/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/peish_blog/img/background_1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="7.共形变换"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-09-20 12:58" pubdate>
+          September 20, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          19 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">7.共形变换</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="引言">引言</h1>
+<p>在几何和物理中，我们常常关心一个变换是否保持图形的角度或形状特征。</p>
+<ul>
+<li><strong>等距变换（isometry）</strong>：保持长度与角度，例如旋转、平移。</li>
+<li><strong>相似变换（similarity）</strong>：保持角度但允许整体缩放。</li>
+<li><strong>共形变换（conformal）</strong>：仅要求保持角度，长度可以局部缩放。</li>
+</ul>
+<p>本讲义从熟悉的旋转矩阵群出发，逐步构造出微分几何中的共形变换定义，并介绍李群视角下的理解方法。</p>
+<h1 id="旋转矩阵群">旋转矩阵群</h1>
+<p>考虑旋转的性质： （1）线性映射 <span
+class="math display"><em>R</em> : ℝ<sup><em>n</em></sup> → ℝ<sup><em>n</em></sup></span>
+（2）等距变换（保持内积） <span
+class="math display"><em>v</em><sup><em>T</em></sup><em>w</em> = (<em>R</em><em>v</em>)<sup><em>T</em></sup>(<em>R</em><em>w</em>) ⇔ <em>R</em><sup><em>T</em></sup><em>R</em> = <em>I</em></span>
+（3）保持方向（右手系） <span
+class="math display">det <em>R</em> = 1</span></p>
+<p><span class="math inline">ℝ<sup>3</sup></span> 中的旋转矩阵群 <span
+class="math inline"><em>S</em><em>O</em>(3)</span> 定义为： <span
+class="math display"><em>S</em><em>O</em>(3) := {<em>R</em> ∈ ℝ<sup>𝟛 × 𝟛</sup> ∣ <em>R</em><sup><em>T</em></sup><em>R</em> = <em>I</em>, det <em>R</em> = 1}</span></p>
+<h1 id="等距变换">等距变换</h1>
+<p>对任意向量 <span
+class="math inline"><em>u</em>, <em>v</em> ∈ ℝ<sup><em>n</em></sup></span>
+和映射<span class="math inline"><em>f</em></span> ，如果 <span
+class="math inline"><em>f</em></span> 满足： <span
+class="math display">⟨<em>f</em>(<em>u</em>), <em>f</em>(<em>v</em>)⟩ = ⟨<em>u</em>, <em>v</em>⟩</span>
+那么<span class="math inline"><em>f</em></span>
+就是等距变换，很明显在等距变换作用下：</p>
+<ul>
+<li>向量长度保持不变。</li>
+<li>向量间夹角保持不变。</li>
+</ul>
+<p>旋转矩阵是<strong>等距变换</strong>的代数实现。</p>
+<h1 id="相似变换">相似变换</h1>
+<p>将 <span
+class="math inline"><em>R</em><sup><em>T</em></sup><em>R</em> = <em>I</em></span>
+这个条件放宽，允许均匀缩放后的矩阵条件为： <span class="math display">$$
+D^T D = \lambda I, \quad \lambda &gt; 0 \quad \implies \quad D =
+\sqrt{\lambda} R, \, R \in SO(n)
+$$</span> 添加 <span class="math inline"><em>λ</em></span>
+的就相当于将旋转操作和缩放操作复合， 长度整体缩放为： <span
+class="math display">$$
+\|Du\| = \sqrt{\lambda}\|u\|
+$$</span> 角度保持为： <span class="math display">$$
+\cos \theta = \frac{\langle Du, Dv \rangle}{\|Du\|\|Dv\|} =
+\frac{\langle u,v \rangle}{\|u\|\|v\|}
+$$</span> 相似变换保持角度，但不保持长度，是共形变换的原型。</p>
+<blockquote>
+<p>微分几何的相似变换是几何操作，矩阵条件是 <span
+class="math inline"><em>D</em><sup><em>T</em></sup><em>D</em> = <em>λ</em><em>I</em></span>，要与线性代数中相似变换
+<span
+class="math inline"><em>P</em><sup>−1</sup><em>A</em><em>P</em></span>区分。</p>
+</blockquote>
+<h1 id="在局部上定义共形变换">在局部上定义共形变换</h1>
+<p>设 <span
+class="math inline"><em>f</em> : ℝ<sup><em>n</em></sup> → ℝ<sup><em>n</em></sup>,  : <em>x</em> ↦ <em>y</em></span>
+光滑，在点 <span class="math inline"><em>x</em></span>
+附近的共形变换可以表示为： <span
+class="math display"><em>D</em><em>f</em>(<em>x</em>)<sup><em>T</em></sup><em>D</em><em>f</em>(<em>x</em>) = <em>λ</em>(<em>x</em>)<em>I</em>,  <em>λ</em>(<em>x</em>) &gt; 0</span>
+<span class="math inline"><em>D</em><em>f</em>(<em>x</em>)</span> 为点
+<span class="math inline"><em>x</em></span> 的雅克比矩阵： <span
+class="math display">$$
+Df(x) =\frac{\partial y^i}{\partial x_{j}}
+$$</span> 从局部上来看，对<span
+class="math inline"><em>x</em></span>领域做了旋转 +
+缩放操作，因此局部上角度保持。</p>
+<h2 id="微分几何视角下的共形变换">微分几何视角下的共形变换</h2>
+<h3 id="度量张量">度量张量</h3>
+<p>在一个有限维向量空间 上： <strong>协变张量</strong>是 <span
+class="math inline"><em>V</em></span> 上的多重线性映射： <span
+class="math display"><em>T</em> : <em>V</em> × ⋯ × <em>V</em> → ℝ</span>
+<strong>在曲面上推广</strong></p>
+<p>曲面 <span class="math inline"><em>M</em></span> 上任意一点 <span
+class="math inline"><em>p</em></span> 都有切平面空间 <span
+class="math inline"><em>T</em><sub><em>p</em></sub><em>M</em></span>，其张量定义为：
+<span
+class="math display"><em>T</em> : <em>T</em><sub><em>p</em></sub><em>M</em> × …<em>T</em><sub><em>p</em></sub><em>M</em> → ℝ</span>
+第一基本形式<span
+class="math inline"><em>g</em><sub><em>i</em><em>j</em></sub></span>将两个切向映射为内积标量，所以是2-型张量。</p>
+<h3 id="黎曼流形">黎曼流形</h3>
+<p><strong>流形</strong>简单来说就是局部内积度量是欧几里得度量的集合。最典型的例子是地面，我们周围的地面看起来是2维平面，但是从太空俯瞰整个地球却是圆的。</p>
+<p><strong>黎曼流形</strong>是一个二元组 <span
+class="math inline">(<em>M</em>, <em>g</em>)</span>，其中: - <span
+class="math inline"><em>M</em></span> 是光滑流形 - <span
+class="math inline"><em>g</em></span> 是<span
+class="math inline"><em>M</em></span>上内积的度量，是个对称正定映射矩阵。
+一般光滑曲面都是黎曼流形。</p>
+<h3 id="拉回映射">拉回映射</h3>
+<p>设有两个光滑流形 <span class="math inline"><em>M</em></span> 和 <span
+class="math inline"><em>N</em></span>，以及一个光滑映射： <span
+class="math display"><em>φ</em> : <em>M</em> → <em>N</em></span>
+对于定义在 <span class="math inline"><em>N</em></span> 上的某个函数
+<span class="math inline"><em>f</em> : <em>N</em> → ℝ</span> ，可以通过
+<span class="math inline"><em>φ</em></span> 在 <span
+class="math inline"><em>M</em></span> 上定义一个新函数 <span
+class="math inline"><em>φ</em><sup>*</sup><em>f</em> : <em>M</em> → ℝ</span>
+使其满足： <span
+class="math display">∀<em>x</em> ∈ <em>M</em>,  (<em>φ</em><sup>*</sup><em>f</em>)(<em>x</em>) = <em>f</em>(<em>φ</em>(<em>x</em>))</span></p>
+<p>也就是说：先用 <span class="math inline"><em>φ</em></span> 把 <span
+class="math inline"><em>x</em></span> 映射到 <span
+class="math inline"><em>N</em></span> ，再对结果应用 <span
+class="math inline"><em>f</em></span>。新函数 <span
+class="math inline"><em>φ</em><sup>*</sup><em>f</em></span> 被称为 <span
+class="math inline"><em>f</em></span>
+的拉回。提出拉回映射，是为了方便在简单流形 <span
+class="math inline"><em>M</em></span> 上研究复杂流形 <span
+class="math inline"><em>N</em></span>
+的局部性质。比如说在平面参数域上研究球面的内积度量。</p>
+<h3 id="拉回度量">拉回度量</h3>
+<p>对光滑映射 <span
+class="math inline"><em>f</em> : (<em>M</em>, <em>g</em>) → (<em>N</em>, <em>h</em>)</span>，在点
+<span class="math inline"><em>p</em> ∈ <em>M</em></span> 的切向量 <span
+class="math inline"><em>X</em>, <em>Y</em> ∈ <em>T</em><sub><em>p</em></sub><em>M</em></span>
+上定义<strong>拉回度量</strong>：</p>
+<p><span
+class="math display">(<em>f</em><sup>*</sup><em>h</em>)<sub><em>p</em></sub>(<em>X</em>, <em>Y</em>) := <em>h</em>(<em>d</em><em>f</em>(<em>X</em>), <em>d</em><em>f</em>(<em>Y</em>))</span></p>
+<p><span
+class="math inline"><em>h</em>(<em>d</em><em>f</em>(<em>X</em>), <em>d</em><em>f</em>(<em>Y</em>))</span>
+表示将 <span class="math inline">(<em>M</em>, <em>g</em>)</span>
+上的切向量映射到 <span
+class="math inline">(<em>N</em>, <em>h</em>)</span>，得到 <span
+class="math inline">(<em>d</em><em>f</em>(<em>X</em>), <em>d</em><em>f</em>(<em>Y</em>))</span>，然后将<span
+class="math inline"><em>h</em></span> 作用在 <span
+class="math inline">(<em>d</em><em>f</em>(<em>X</em>), <em>d</em><em>f</em>(<em>Y</em>))</span>
+上得到点 <span class="math inline"><em>p</em></span> 映射到 <span
+class="math inline">(<em>N</em>, <em>h</em>)</span> 的内积。</p>
+<h4 id="例-1平面到圆柱面的拉回">例 1：平面到圆柱面的拉回</h4>
+<p>给定条件：</p>
+<ul>
+<li><span
+class="math inline"><em>M</em> = ℝ<sup>2</sup></span>（平面，坐标 <span
+class="math inline">(<em>x</em>, <em>y</em>)</span>），</li>
+<li><span
+class="math inline"><em>N</em> = <em>S</em><sup>1</sup> × ℝ</span>（圆柱面，半径
+1，坐标 <span
+class="math inline">(<em>θ</em>, <em>z</em>), <em>θ</em> ∈ [0, 2<em>π</em>), <em>z</em> ∈ ℝ</span>，<span
+class="math inline"><em>θ</em></span> 对应圆周角，<span
+class="math inline"><em>z</em></span> 对应轴线方向）</li>
+<li>定义光滑映射 <span
+class="math inline"><em>f</em> : <em>M</em> → <em>N</em>, <em>f</em>(<em>x</em>, <em>y</em>) = (<em>θ</em> = <em>x</em>, <em>z</em> = <em>y</em>)</span></li>
+<li>圆柱面<span class="math inline"><em>N</em></span>在<span
+class="math inline">(<em>θ</em>, <em>z</em>)</span>坐标下的度量为：
+<span class="math display">$$
+\begin{pmatrix}
+1&amp;0 \\
+0&amp;1
+\end{pmatrix}
+$$</span></li>
+<li>给定<span class="math inline"><em>M</em></span>上两个切向量 <span
+class="math inline"><strong>x</strong><sub>1</sub> = (<em>x</em><sub>1</sub>, <em>y</em><sub>1</sub>), <strong>x</strong><sub>2</sub> = (<em>x</em><sub>2</sub>, <em>y</em><sub>2</sub>)</span></li>
+</ul>
+<p>计算平面到圆柱面的拉回度量 <span
+class="math inline"><em>f</em><sup>*</sup><em>g</em></span> <span
+class="math display">$$
+f^{*}g = g(df(\mathbf{x_{1}}),df(\mathbf{x_{2}})) =
+(x_{1},y_{1})\begin{pmatrix}1&amp;0 \\0&amp;1\end{pmatrix}
+(x_{2},y_{2})^{T} = x_{1}x_{2}+y_{1}y_{2}
+$$</span></p>
+<p>结论：平面 <span class="math inline"><em>M</em></span> 上的拉回度量
+<span
+class="math inline"><em>f</em><sup>*</sup><em>g</em></span>，就是平面的<strong>标准欧氏度量</strong>——
+这符合直觉：把平面卷成圆柱时，局部长度没有拉伸，所以拉回度量和平面原度量一致。</p>
+<h4 id="例2.-球面到平面的拉回球极投影">例2.
+球面到平面的拉回（球极投影）</h4>
+<p>给定条件：</p>
+<ul>
+<li><span
+class="math inline"><em>M</em> = <em>S</em><sup>2</sup></span>{北极}（去掉北极的单位球面，球坐标
+<span
+class="math inline">(<em>θ</em>, <em>φ</em>)，<em>θ</em> ∈ (0, <em>π</em>), <em>φ</em> ∈ (0, 2<em>π</em>)</span>）；</li>
+<li><span
+class="math inline"><em>N</em> = ℝ<sup>2</sup></span>（平面，直角坐标
+<span class="math inline">(<em>x</em>, <em>y</em>)</span>）；</li>
+<li>光滑映射<span
+class="math inline"><em>f</em> : <em>M</em> → <em>N</em></span>（球极投影：从北极
+<span class="math inline">(0, 0, 1)</span> 出发，将球面上点 <span
+class="math inline">(<em>θ</em>, <em>φ</em>)</span> 投影到平面 <span
+class="math inline"><em>z</em> = 0</span> 上，坐标对应为 <span
+class="math inline"><em>x</em> = <em>t</em><em>a</em><em>n</em>(<em>θ</em>/2)<em>c</em><em>o</em><em>s</em><em>φ</em>，<em>y</em> = <em>t</em><em>a</em><em>n</em>(<em>θ</em>/2)<em>s</em><em>i</em><em>n</em><em>φ</em></span>；</li>
+<li><span class="math inline"><em>N</em></span>（平面）上的标准欧氏度量
+<span
+class="math inline"><em>g</em> = <em>d</em><em>x</em><sup>2</sup> + <em>d</em><em>y</em><sup>2</sup></span>，球面度量为<span
+class="math inline"><em>h</em> = <em>d</em><em>θ</em><sup>2</sup> + sin<sup>2</sup><em>θ</em><em>d</em><em>φ</em><sup>2</sup></span></li>
+</ul>
+<p>计算拉回度量 <span
+class="math inline"><em>f</em><sup>*</sup><em>g</em></span>：</p>
+<p>（1）计算一阶导数 <span class="math inline"><em>J</em></span>: <span
+class="math display">$$J=
+\begin{pmatrix}
+\frac{\partial x}{\partial\theta} &amp; \frac{\partial
+x}{\partial\varphi} \\
+\frac{\partial y}{\partial\theta} &amp; \frac{\partial
+y}{\partial\varphi}
+\end{pmatrix}=
+\begin{pmatrix}
+\frac{1}{2}\sec^2(\theta/2)\cos\varphi &amp; -\tan(\theta/2)\sin\varphi
+\\
+\frac{1}{2}\sec^2(\theta/2)\sin\varphi &amp; \tan(\theta/2)\cos\varphi
+\end{pmatrix};$$</span> （2）计算拉回度量的矩阵：<span
+class="math inline">(<em>f</em><sup>*</sup><em>g</em>) = <em>J</em><sup><em>T</em></sup><em>g</em><em>J</em></span>
+： <span class="math display">$$
+(f^*g) = \sec^4(\theta/2)·\frac{1}{4}d\theta^2 +
+\sec^2(\theta/2)\tan^2(\theta/2)d\varphi^2
+$$</span> 化简为<span class="math inline">sin , cos </span>形式： <span
+class="math display">$$
+(f∗g)=\frac{​(d\theta^2+sin^{2}{\theta}d\varphi^2)}{(1+cos\theta)}
+$$</span> 球面的标准度量<span class="math inline"><em>h</em></span>为：
+<span
+class="math display"><em>h</em> = <em>d</em><em>θ</em><sup>2</sup> + sin<sup>2</sup><em>θ</em><em>d</em><em>φ</em><sup>2</sup></span>
+将 <span class="math inline"><em>h</em></span> 代入拉回度量： <span
+class="math display">$$
+f^{*}h=\frac{h}{(1+\cos \theta)^2}
+$$</span> 球面到平面的拉回符合<strong>球面原度量 h
+乘以一个正函数</strong>特征——这个是共形映射特征。</p>
+<p>小结：拉回度量的作用就是：将 N 上的局部度量问题，转化 为 M
+上的度量问题。N 可能是高维、弯曲或复杂的流形，直接在 N
+上计算局部性质可能很麻烦，在局部上将N转化为低维、平坦的流形（如ℝ¹、ℝ²），计算更简单。</p>
+<h2 id="共形映射定义">共形映射定义</h2>
+<p>若 <span class="math inline"><em>M</em>, <em>N</em></span>
+是黎曼流形，<span
+class="math inline"><em>f</em> : <em>M</em> → <em>N</em></span>
+是光滑函数，则 <span class="math inline"><em>f</em></span>
+是共形变换当且仅当存在一个正函数 <span
+class="math inline"><em>λ</em>(<em>p</em>) &gt; 0</span>，使得在每一点
+<span class="math inline"><em>p</em> ∈ <em>M</em></span> 有： <span
+class="math display"><em>f</em><sup>∗</sup><em>g</em><sub><em>N</em></sub>​ = <em>λ</em>(<em>p</em>) ⋅ <em>g</em><sub><em>M</em></sub>​</span></p>
+<p>其中： - <span
+class="math inline"><em>g</em><sub><em>M</em></sub></span> 是 <span
+class="math inline"><em>M</em></span> 上的度量张量； - <span
+class="math inline"><em>g</em><sub><em>N</em></sub></span> 是 <span
+class="math inline"><em>N</em></span> 上的度量张量; - <span
+class="math inline"><em>f</em><sup>*</sup><em>g</em><sub><em>N</em></sub></span>
+表示 <span class="math inline"><em>g</em><sub><em>N</em></sub></span> 在
+<span class="math inline"><em>f</em></span> 下的[<a
+href="#拉回映射">拉回映射</a>]； - <span
+class="math inline"><em>Ω</em>(<em>p</em>)<sup>2</sup></span>
+是尺度因子（scale factor）</p>
+<h1 id="共形变换的几何性质">共形变换的几何性质</h1>
+<h2 id="命题1">命题1</h2>
+<p>📌 证明：等距变换是共形变换的子集</p>
+<p>共形变换的定义 设 <span
+class="math inline">(<em>M</em>, <em>g</em>)</span> 是带有[<a
+href="#度量张量">度量张量</a>]的流形，映射 <span
+class="math inline"><em>f</em> : <em>M</em> → <em>M</em></span> 是[<a
+href="#等距变换">等距变换</a>]，当且仅当对任意 <span
+class="math inline"><em>p</em>, <em>q</em> ∈ <em>M</em></span> 有：</p>
+<p><span
+class="math display"><em>d</em>(<em>f</em>(<em>p</em>), <em>f</em>(<em>q</em>)) = <em>d</em>(<em>p</em>, <em>q</em>)</span></p>
+<p>🧾 正式证明 若 <span class="math inline"><em>f</em></span>
+是等距变换，则有： <span
+class="math display"><em>f</em><sup>*</sup><em>g</em> = <em>g</em></span>
+这等价于： <span
+class="math display"><em>f</em><sup>*</sup><em>g</em> = 1 ⋅ <em>g</em> = <em>Ω</em><sup>2</sup><em>g</em>  其中
+<em>Ω</em> ≡ 1</span> 所以 <span class="math inline"><em>f</em></span>
+满足共形变换的定义，则等距变换是共性变换的子集。</p>
+<h2 id="命题2">命题2</h2>
+<p>📌 证明： <span
+class="math inline"><em>f</em> : <em>M</em> → <em>N</em></span>
+是共形映射，等价于<span
+class="math inline"><em>f</em></span>保相交曲线夹角且<span
+class="math inline"><em>f</em></span>是双射</p>
+<p>🧾 证明 设 <span class="math inline"><em>M</em>, <em>N</em></span>
+是带黎曼度量的流形，<span
+class="math inline"><em>f</em> : <em>M</em> → <em>N</em></span>
+是光滑映射。</p>
+<p>方向一：若 <span class="math inline"><em>f</em></span> 是共形映射，则
+<span class="math inline"><em>f</em></span> 保曲线夹角，且是局部双射
+（1）证明保曲线夹角 若 <span class="math inline"><em>f</em></span>
+是共形映射，则 <span class="math inline"><em>f</em></span>
+保曲线夹角，且是局部双射。 <span class="math inline"><em>f</em></span>
+是共形映射 ⇔ <span
+class="math inline"><em>f</em><sup>*</sup><em>g</em><sub><em>N</em></sub> = <em>Ω</em><sup>2</sup><em>g</em><sub><em>M</em></sub></span>，其中
+<span class="math inline"><em>Ω</em> : <em>M</em> → ℝ<sup>+</sup></span>
+是正光滑函数。也就是说，在每一点 <span
+class="math inline"><em>p</em> ∈ <em>M</em></span> 处，<span
+class="math inline"><em>f</em></span> 将切空间中的任意两个向量 <span
+class="math inline"><em>X</em>, <em>Y</em> ∈ <em>T</em><sub><em>p</em></sub><em>M</em></span>
+的内积变为：</p>
+<p><span
+class="math display"><em>g</em><sub><em>N</em></sub>(<em>d</em><em>f</em><sub><em>p</em></sub>(<em>X</em>), <em>d</em><em>f</em><sub><em>p</em></sub>(<em>Y</em>)) = <em>Ω</em>(<em>p</em>)<sup>2</sup><em>g</em><sub><em>M</em></sub>(<em>X</em>, <em>Y</em>)</span>
+<span class="math inline"><em>f</em></span>
+保持内积的方向结构，长度被整体缩放，但<strong>夹角保持不变</strong></p>
+<p>（2）证明局部双射 由于 <span class="math inline"><em>f</em></span>
+是共形变换，它在每点处导数是可逆线性变换（<span
+class="math inline"><em>d</em><em>f</em><sub><em>p</em></sub></span>
+非奇异），因此 <span class="math inline"><em>f</em></span>
+在每点附近是<strong>局部双射</strong></p>
+<p>方向二：若 <span class="math inline"><em>f</em></span> 保曲线夹角
+且是双射，则 <span class="math inline"><em>f</em></span> 是共形映射</p>
+<p>需要证明存在一个正函数 <span
+class="math inline"><em>Ω</em></span>，使得：</p>
+<p><span
+class="math display"><em>f</em><sup>*</sup><em>g</em><sub><em>N</em></sub> = <em>Ω</em><sup>2</sup><em>g</em><sub><em>M</em></sub></span></p>
+<ul>
+<li>夹角保持 ⇨ <span class="math inline"><em>f</em></span> 的微分 <span
+class="math inline"><em>d</em><em>f</em><sub><em>p</em></sub></span>
+在每一点处是一个 <strong>角度保持的线性映射</strong>；</li>
+<li>所有保持角度的线性变换，在欧氏空间中都可以表示为正数倍的正交变换；</li>
+<li>因此，<span
+class="math inline"><em>d</em><em>f</em><sub><em>p</em></sub></span>
+等价于一个保角线性映射（即相似变换）：</li>
+</ul>
+<p><span
+class="math display"><em>g</em><sub><em>N</em></sub>(<em>d</em><em>f</em><sub><em>p</em></sub>(<em>X</em>), <em>d</em><em>f</em><sub><em>p</em></sub>(<em>Y</em>)) = <em>Ω</em>(<em>p</em>)<sup>2</sup><em>g</em><sub><em>M</em></sub>(<em>X</em>, <em>Y</em>)</span></p>
+<ul>
+<li>这意味着 <span
+class="math inline"><em>f</em><sup>*</sup><em>g</em><sub><em>N</em></sub> = <em>Ω</em><sup>2</sup><em>g</em><sub><em>M</em></sub></span>，即
+<span class="math inline"><em>f</em></span> 是共形映射。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/peish_blog/categories/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="category-chain-item">微分几何</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/peish_blog/tags/%E5%BE%AE%E5%88%86%E5%87%A0%E4%BD%95/" class="print-no-link">#微分几何</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>7.共形变换</div>
+      <div>https://rapierpeish.github.io/2025/09/20/共形变换/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Peish.L</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 20, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/peish_blog/2025/09/17/%E5%90%8C%E8%B0%83%E7%BE%A4/" title="02.同调群">
+                        <span class="hidden-mobile">02.同调群</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/peish_blog/js/events.js" ></script>
+<script  src="/peish_blog/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/peish_blog/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/peish_blog/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/peish_blog/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

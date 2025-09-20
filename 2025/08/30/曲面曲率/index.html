@@ -21,20 +21,20 @@
   
     <meta name="description" content="主曲率的代数推导（广义特征值法） 引入：从法曲率出发 我们知道曲面在一点 p 处沿任意切向方向 v 的法曲率定义为： $$ k_n(\mathbf{v}) &#x3D; \frac{\mathrm{II}(\mathbf{v}, \mathbf{v})}{\mathrm{I}(\mathbf{v}, \mathbf{v})} $$ 其中： - I(v, v) &#x3D; Ea2 + 2Fab + Gb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微分几何6.曲面曲率">
+<meta property="og:title" content="6.曲面曲率">
 <meta property="og:url" content="https://rapierpeish.github.io/2025/08/30/%E6%9B%B2%E9%9D%A2%E6%9B%B2%E7%8E%87/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="主曲率的代数推导（广义特征值法） 引入：从法曲率出发 我们知道曲面在一点 p 处沿任意切向方向 v 的法曲率定义为： $$ k_n(\mathbf{v}) &#x3D; \frac{\mathrm{II}(\mathbf{v}, \mathbf{v})}{\mathrm{I}(\mathbf{v}, \mathbf{v})} $$ 其中： - I(v, v) &#x3D; Ea2 + 2Fab + Gb">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-08-30T04:31:18.769Z">
-<meta property="article:modified_time" content="2025-08-30T05:05:39.520Z">
+<meta property="article:modified_time" content="2025-09-20T04:58:04.387Z">
 <meta property="article:author" content="Peish.L">
 <meta property="article:tag" content="微分几何">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>微分几何6.曲面曲率 - Hexo</title>
+  <title>6.曲面曲率 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="微分几何6.曲面曲率"></span>
+            <span id="subtitle" data-typed-text="6.曲面曲率"></span>
           
         </div>
 
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k words
+          1.5k words
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          12 mins
+          13 mins
         
       </span>
     
@@ -275,7 +275,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">微分几何6.曲面曲率</h1>
+            <h1 id="seo-header">6.曲面曲率</h1>
             
             
               <div class="markdown-body">
@@ -295,25 +295,35 @@ class="math inline">II(<strong>v</strong>, <strong>v</strong>) = <em>L</em
 为第二基本形式； - <span
 class="math inline"><strong>v</strong> = <em>a</em> <em>φ</em><sub><em>u</em></sub> + <em>b</em> <em>φ</em><sub><em>v</em></sub></span>
 是点 <span class="math inline"><em>p</em></span> 的任意非零切向量。</p>
-<p>我们的目标是： 寻找使 <span
+<p>我们的目标是：</p>
+<ul>
+<li>寻找使 <span
 class="math inline"><em>k</em><sub><em>n</em></sub>(<strong>v</strong>)</span>
 取极值的方向 <span
-class="math inline"><strong>v</strong></span>，即主曲率方向。</p>
+class="math inline"><strong>v</strong></span>，即主曲率方向。</li>
+</ul>
 <h2 id="用rayleigh商定义主曲率">用Rayleigh商定义主曲率</h2>
 <h3 id="rayleigh商介绍">Rayleigh商介绍</h3>
 <p>对于<span
 class="math inline"><em>n</em> × <em>n</em></span>的<strong>实对称矩阵</strong><span
 class="math inline"><em>A</em></span>和非零向量<span
-class="math inline"><strong>x</strong> ∈ ℝ<sup><em>n</em></sup></span>，瑞利商定义为：
-<span class="math display">$$
+class="math inline"><strong>x</strong> ∈ ℝ<sup><em>n</em></sup></span>，瑞利商定义为：</p>
+<p><span class="math display">$$
 R(A, \mathbf{x}) = \frac{\mathbf{x}^T A \mathbf{x}}{\mathbf{x}^T
 \mathbf{x}}
-$$</span> #### Rayleigh商性质 特征值的极值性 -
-瑞利商的取值范围在矩阵<span
-class="math inline"><em>A</em></span>的极小和极大特征值之间： <span
+$$</span></p>
+<h4 id="rayleigh商性质">Rayleigh商性质</h4>
+<p>特征值的极值性</p>
+<ul>
+<li>瑞利商的取值范围在矩阵<span class="math inline"><em>A</em></span>
+的极小和极大特征值之间：</li>
+</ul>
+<p><span
 class="math display"><em>λ</em><sub>min</sub> ≤ <em>R</em>(<em>A</em>, <strong>x</strong>) ≤ <em>λ</em><sub>max</sub></span>
-临界点特性 - 瑞利商梯度为零时，<span
-class="math inline"><strong>x</strong></span>即为特征向量，此时瑞利商等于对应特征值</p>
+临界点特性 - 固定 <span class="math inline"><em>A</em></span>
+矩阵，瑞利商梯度为零时，<span
+class="math inline"><strong>x</strong></span>
+即为特征向量，瑞利商等于对应特征值</p>
 <h3 id="法曲率是个rayleigh商">法曲率是个Rayleigh商</h3>
 <p><span
 class="math inline"><em>k</em><sub><em>n</em></sub>(<strong>v</strong>)</span>
@@ -331,8 +341,8 @@ I\, \mathbf{v}}
 $$</span></p>
 <p>我们的问题转化为：<strong>寻找该比值的极值</strong>。根据Rayleigh商极值性质，极大法曲率和极小法曲率就是特征方程的两个跟。</p>
 <h2 id="从极值定义法曲率">从极值定义法曲率</h2>
-<p>我们需要求极值，证明存在 <span class="math inline"><em>κ</em></span>
-使得： <span
+<p>我们将几何问题转化为代数问题：证明存在 <span
+class="math inline"><em>κ</em></span> 使得： <span
 class="math display"><em>I</em><em>I</em> <strong>v</strong> = <em>κ</em> <em>I</em> <strong>v</strong></span>
 这就是主曲率的定义！ - <span class="math inline"><em>κ</em></span>
 即主曲率； - <span class="math inline"><strong>v</strong></span>
@@ -340,6 +350,7 @@ class="math display"><em>I</em><em>I</em> <strong>v</strong> = <em>κ</em>
 <p>求解该特征值问题需要解以下特征方程：</p>
 <p><span
 class="math display">det (<em>I</em><em>I</em> − <em>κ</em> <em>I</em>) = 0</span>
+将 <span class="math inline"><em>I</em>, <em>I</em><em>I</em></span>
 即： <span class="math display">$$
 \left|
 \begin{array}{cc}
@@ -349,8 +360,8 @@ M - \kappa F &amp; N - \kappa G
 \right| = 0
 $$</span></p>
 <p>展开后得到关于 <span class="math inline"><em>κ</em></span>
-的二次方程，其两个实根即为主曲率。 因为<span
-class="math inline"><em>I</em><em>I</em>, <em>I</em></span>都是正定对称矩阵，所以不会有复数根。</p>
+的二次方程，其两个实根即为主曲率。因为<span
+class="math inline"><em>I</em><em>I</em>, <em>I</em></span>都是实正定对称矩阵，所以不会有复数根。</p>
 <p>总结： - 主曲率和主方向就是 <span
 class="math inline">det (<em>I</em><em>I</em> − <em>κ</em> <em>I</em>) = 0</span>
 的特征值和特征向量。</p>
@@ -416,7 +427,7 @@ class="math display"><em>E</em> = <em>G</em> = 1,  <em>F</em> = 
 $$</span></p>
 <p>解得主曲率： <span
 class="math display"><em>κ</em><sub>1</sub> = 2,  <em>κ</em><sub>2</sub> = −2</span></p>
-<h2 id="总结">✅ 总结</h2>
+<h2 id="总结">总结</h2>
 <ul>
 <li>主曲率是法曲率在单位切向量上的极值。</li>
 <li>对于曲面 <span
@@ -456,15 +467,21 @@ class="math display">$$
 K = \det(\text{shape operator}) = \frac{\det(II)}{\det(I)} = \frac{LN -
 M^2}{EG - F^2}
 $$</span></p>
+<ul>
+<li>shape operator 就是Weingarten变换的代数矩阵形式</li>
+</ul>
 <h3 id="高斯曲率的几何解释面元变形率">2.
 高斯曲率的几何解释：面元变形率</h3>
 <p>考虑参数化曲面： <span
 class="math display"><em>φ</em>(<em>u</em>, <em>v</em>) : <em>D</em> ⊂ ℝ<sup>2</sup> → ℝ<sup>3</sup></span></p>
 <ul>
-<li><p>在参数域中，一小块面积元是： <span class="math display">$$
+<li><p>在参数域中，一小块面积元 <span
+class="math inline"><em>d</em><em>A</em></span> 是： <span
+class="math display">$$
 dA = \sqrt{EG - F^2}\, du\, dv
 $$</span></p></li>
-<li><p>在曲面上的对应面积元是： <span
+<li><p>在曲面上的对应面积元<span
+class="math inline"><em>d</em><em>S</em></span>是： <span
 class="math display"><em>d</em><em>S</em> = ∥<em>φ</em><sub><em>u</em></sub> × <em>φ</em><sub><em>v</em></sub>∥ <em>d</em><em>u</em> <em>d</em><em>v</em></span></p></li>
 </ul>
 <p>高斯曲率衡量的是当我们在 <span
@@ -487,7 +504,7 @@ class="math inline"><em>K</em> = 0</span>，贴片基本沿某方向展开�
 <p>这种“贴片变形”的整体特性就由 <span
 class="math inline"><em>K</em></span>
 精确刻画，反映了映射在面积意义上的<strong>非线性变形率</strong>。</p>
-<h3 id="小结">4. 小结</h3>
+<h3 id="小结">3. 小结</h3>
 <ul>
 <li>高斯曲率 <span class="math inline"><em>K</em></span>
 是主曲率的乘积，也等于形算子（Shape Operator）的行列式；</li>
@@ -496,7 +513,8 @@ K = \frac{LN - M^2}{EG - F^2}
 $$</span></li>
 <li>它描述的是<strong>整个二维领域</strong>的弯曲行为，是<strong>整体面积变形率</strong></li>
 <li><span class="math inline"><em>K</em></span>
-是<strong>内蕴量</strong>，完全由第一基本形式推导出来；</li>
+是<strong>内蕴量</strong>，完全由第一基本形式推导出来
+（高斯绝妙定理）；</li>
 </ul>
 
                 
@@ -543,7 +561,7 @@ $$</span></li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>微分几何6.曲面曲率</div>
+      <div>6.曲面曲率</div>
       <div>https://rapierpeish.github.io/2025/08/30/曲面曲率/</div>
     </div>
     <div class="license-meta">
@@ -588,9 +606,9 @@ $$</span></li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/peish_blog/2025/08/30/%E7%AC%AC%E4%BA%8C%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/" title="微分几何4.第二基本形式">
+                      <a href="/peish_blog/2025/08/30/%E7%AC%AC%E4%BA%8C%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F/" title="4.第二基本形式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">微分几何4.第二基本形式</span>
+                        <span class="hidden-mobile">4.第二基本形式</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -598,8 +616,8 @@ $$</span></li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/peish_blog/2025/08/30/%E6%AD%A3%E5%88%99%E6%9B%B2%E9%9D%A2%E8%AE%B2%E4%B9%89/" title="微分几何2.正则曲面">
-                        <span class="hidden-mobile">微分几何2.正则曲面</span>
+                      <a href="/peish_blog/2025/08/30/%E6%AD%A3%E5%88%99%E6%9B%B2%E9%9D%A2%E8%AE%B2%E4%B9%89/" title="2.正则曲面">
+                        <span class="hidden-mobile">2.正则曲面</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
